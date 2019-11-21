@@ -7,44 +7,41 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-<<<<<<< HEAD
-void fillArray(double[] array, int highest_exponent, double[] coefficient ){ 
+void fillArray(double[] array, int highest_exponent, double[] coefficient )
+{ 
   int j;
   double[] array;
-  for (j=0, j>=coefficient[highest_exponent], j++){
+  for (j=0, j>=coefficient[highest_exponent], j++)
+  {
     array[j]= coefficient[j]*(x^(j));
   }
 }
 
-void printArray(int highest_exponent, double[] array){
+void printArray(int highest_exponent, double[] array)
+{
   int z;
-  for (z=highest_exponent, z>=0, --z){
+  for (z=highest_exponent, z>=0, --z)
+  {
     printf("The polynomial is: %lf", array[z]);
   }
 }
 
 
-int main(){
-  int highest_exponent;
+int main()
+{
+  int highest_exponent; //user-entered value: largest value of n for x^n
+  printf("Let's enter a polynomial!!\n");
   printf("Input value for highest value exponent\n:");
   scanf("%d", &highest_exponent);
   int[] coefficient;
   
   int i;
-  for (i=0, i<=highest_exponent, i++){
+  for (i=0, i<=highest_exponent, i++)
+  {
       printf("Input the coefficient for the highest value exponent:\n");
       scanf("%lf",&coefficient[i]);
 	i=i+1;
     }
   fillArray();
   printArray();
-=======
-int main()
-{
-  int highestExp; //user-entered value: largest value of n for x^n
-  
-  printf("Let's enter a polynomial!!\n");
-  printf("Enter highest exponent: ");
-  scanf("%d", &highestExp);
->>>>>>> a7c8f67106824fa806526beb0b7e3301eafbf647
 }
