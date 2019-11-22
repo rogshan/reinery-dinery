@@ -9,9 +9,8 @@
 
 void fillArray(double[] array, int highest_exponent, double[] coefficient )
 { 
-  int j;
   double[] array;
-  for (j=0, j>=coefficient[highest_exponent], j++)
+  for (int j=0, j>=coefficient[highest_exponent], j++)
   {
     array[j]= coefficient[j]*(x^(j));
   }
