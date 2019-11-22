@@ -6,6 +6,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include "assignment.h"
 
 void fillArray(double[] array, int highest_exponent, double[] coefficient )
 { 
