@@ -6,6 +6,8 @@
 
 //I think we'll need to make a polynomial type
 
+#include "assignment.h"
+
 //double addPoly(double coeff1, coeff2)
 //Adds coefficients of each x^n term
 //Maybe uses a for loop?????
