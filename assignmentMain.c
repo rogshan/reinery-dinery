@@ -1,28 +1,28 @@
 //assignmentMain.c
 //Main file for CE4703 assignment 3
 //Contains user interface for user inputs
-//Authors: Ciara Sookarry, 
+//Authors: Ciara Sookarry, Roger Shanahan, 
 //Date: 21/11/19 (Update as necessary)
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 #include "assignment.h"
 
-void fillArray(double[] array, int highest_exponent, double[] coefficient )
+void fillArray(double *ptrArray[], int high_exponent, double coefficient[])
 { 
-  double[] array;
-  for (int j=0, j>=coefficient[highest_exponent], j++)
+  for (int j=high_exponent; j >= coefficient[high_exponent]; j--)
   {
-    array[j]= coefficient[j]*(x^(j));
+    double value = (coefficient[j] );
+    ptrArray[j] = &value;
   }
 }
 
-void printArray(int highest_exponent, double[] array)
+void printArray(double *ptrArray[], int high_exponent)
 {
-  int z;
-  for (z=highest_exponent, z>=0, --z)
+  for (int z=high_exponent; z>=0; --z)
   {
-    printf("The polynomial is: %lf", array[z]);
+    printf("The polynomial is: %lf x^ %d", *ptrArray[z], z);
   }
 }
 
@@ -33,15 +33,14 @@ int main()
   printf("Let's enter a polynomial!!\n");
   printf("Input value for highest value exponent\n:");
   scanf("%d", &highest_exponent);
-  int[] coefficient;
+  double coefficient[highest_exponent];
+  double *array[highest_exponent]; //creates pointer array to fill
   
-  int i;
-  for (i=0, i<=highest_exponent, i++)
+  for (int i=0; i<=highest_exponent; i++)
   {
       printf("Input the coefficient for the highest value exponent:\n");
       scanf("%lf",&coefficient[i]);
-	i=i+1;
-    }
-  fillArray();
-  printArray();
+  }
+  fillArray(array, highest_exponent, coefficient);
+  printArray(array, highest_exponent);
 }
