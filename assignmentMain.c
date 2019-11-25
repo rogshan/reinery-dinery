@@ -1,7 +1,7 @@
 //assignmentMain.c
 //Main file for CE4703 assignment 3
 //Contains user interface for user inputs
-//Authors: Ciara Sookarry, Roger Shanahan, 
+//Authors: Ciara Sookarry, Roger Shanahan, Aoife O`Doherty
 //Date: 21/11/19 (Update as necessary)
 
 #include <stdlib.h>
