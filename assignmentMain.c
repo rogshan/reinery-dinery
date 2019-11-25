@@ -8,24 +8,13 @@
 #include <stdio.h>
 #include <math.h>
 #include "assignment.h"
-
-<<<<<<< HEAD
-
-void fillArray(double[] array, int highest_exponent, double[] coefficient){ //Function to fill array with user inputted values
-  int j;
-  for (j=0, j>=coefficient[highest_exponent], --j){ 
-    array[j]= coefficient[j]*(x^(j)); //In the form a(x^exponent)
-||||||| merged common ancestors
-<<<<<<< HEAD
-
-=======
+    
 void fillArray(double *ptrArray[], int high_exponent, double coefficient[]) //Function to fill coefficient array with user inputted values
 { 
   for (int j=high_exponent; j >= coefficient[high_exponent]; j--)//For loop to fill array with value of the exponent order of decreasing value 
   {
     double value = (coefficient[j] );
     ptrArray[j] = &value;
->>>>>>> c924338a79ffb3e864c1ed3cee6e30a5d7911a32
   }
 }
 
