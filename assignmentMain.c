@@ -9,25 +9,6 @@
 #include <math.h>
 //#include "assignment.h"
 
-/*
-void fillArray(double *ptrArray[], int highest_exponent, double coefficient[]) //Function to fill coefficient array with user inputted values
-{ 
-  for (int j=highest_exponent; j >= coefficient[highest_exponent]; j--)//For loop to fill array with value of the exponent order of decreasing value 
-  {
-    double value = (coefficient[j] );
-    ptrArray[j] = &value;
-  }
-}
-
-void printArray(double *ptrArray[], int highest_exponent) //Function to print array.
-{
-  for (int z=highest_exponent; z>=0; --z) //For loop to print array with the highest exponent value first, decreasing down
-  {
-    printf("The polynomial is: %lf x^ %d", *ptrArray[z], z);
-  }
-}
-
-*/
 
 struct node 
   {
@@ -49,7 +30,7 @@ void createNodeList(int max_coefficients)
     {
 // reads data for the node through keyboard
 
-        printf(" Inputcoefficient for highest value exponent: ");
+        printf("Input coefficient for highest value exponent: ");
         scanf("%d", &num);
         stnode->num = num;      
         stnode->nextptr = NULL; // links the address field to NULL
@@ -60,12 +41,12 @@ void createNodeList(int max_coefficients)
             fnNode = (struct node *)malloc(sizeof(struct node));
             if(fnNode == NULL)
             {
-                printf(" Memory can not be allocated.");
+                printf("Memory can not be allocated.");
                 break;
             }
             else
             {
-                printf(" Input coefficient for next value: ");
+                printf("Input coefficient for next value: ");
                 scanf(" %d", &num);
  
                 fnNode->num = num;      // links the num field of fnNode with num
@@ -78,7 +59,7 @@ void createNodeList(int max_coefficients)
     }
 }
 
-void displayList()
+void displayList(int highest_exponent)
 {
     struct node *tmp;
     if(stnode == NULL)
@@ -90,8 +71,19 @@ void displayList()
         tmp = stnode;
         while(tmp != NULL)
         {
-            printf(" Data = %d\n", tmp->num);       // prints the data of current node
-            tmp = tmp->nextptr;                     // advances the position of current node
+	  for(int i=highest_exponent; i>=0; --i)
+	    {
+	      if(i>0)
+		{
+		  printf("%dx^%d,  ", tmp->num,i);       // prints the data of current node
+		  tmp = tmp->nextptr;                     // advances the position of current node
+		}
+	      else
+		{
+		  printf("%d\n", tmp->num); 
+		}
+		
+	    }
         }
     }
 }
@@ -100,28 +92,15 @@ int main()
 {
   
   int highest_exponent; //user-entered value: largest value of n for x^n
-  printf("Let's enter a polynomial!!\n");
+  printf("Let's enter a polynomial!!\n\n");
   printf("Input value for highest value exponent:\n");
   scanf("%d", &highest_exponent);
-  /*
-  double coefficient[highest_exponent];//stores the user inputted coefficients
-  double *array[highest_exponent]; //creates pointer array to fill
-*/
-  
 
   int max_coefficients = highest_exponent+1;
-       	printf("\n\n Linked List : To create and display Singly Linked List :\n");
-       	printf("-------------------------------------------------------------\n");
-		
-    
+      
     createNodeList(max_coefficients);
-    printf("\n Data entered in the list : \n");
-    displayList();
+    displayList(highest_exponent);
     return 0;
-  
-     
-    // fillArray(array, highest_exponent, coefficient); //Calling function fillArray
-    // printArray(array, highest_exponent); //Calling function printArray
 }
 
 
