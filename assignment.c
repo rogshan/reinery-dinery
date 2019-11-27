@@ -8,8 +8,25 @@
 
 #include "assignment.h"
 
+/*
+void readPolynomial(struct polynomial poly[10])
+{
+  int totalNum; //total number of values
 
-
+  printf("Please enter the total number of terms used in the polynomial");
+  scanf("&d", &totalNum);
+  
+  printf("Please enter the coefficient and exponent\n");
+  for(int i = 0l i<totalNum; i++)
+  {
+    printf("Enter the coeffieient (%d): ", i+1);
+    scanf("%lf", &poly[i].coefficient);
+    printf("Enter the exponent (%d): ", i+1);
+    scanf("%lf", &poly[i].exponent);
+  }
+  return totalNum;
+}
+*/
 void createNodeList(int max_coefficients)
 {
   struct node *fnNode, *tmp;

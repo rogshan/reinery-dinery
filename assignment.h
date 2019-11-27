@@ -4,7 +4,8 @@
 //
 //Author: Ciara Sookarry, Roger Shanahan
 //Date: 22/11/19
-
+#ifndef ASSIGNMENT_H
+#define ASSIGNMENT_H
 //declarations of functions to create link list
 void createNodeList(int max_coefficients);
 void displayList(int highest_exponent);
@@ -14,17 +15,19 @@ double addPoly(double coeff1, double coeff2);
 double subtract(double coeff1, double coeff2);
 double multiplyPoly();
 
+typedef struct
+{
+  double coefficient; //the coefficient
+  int exponent;       //the exponent
+}polynomial
+
 struct node 
-  {
-    int num;                        //Data of the node
-    struct node *nextptr;           //Address of the next node
-  }*stnode;
+{
+  int num;                        //Data of the node
+  struct node *nextptr;           //Address of the next node
+}*stnode;
 
 /*
-typedef struct{
-  //I have no idea how we'll do this since the number of terms is variable
-}polynomial;
-
 //creation of link list node - MIGHT BE WRONG
 typedef struct n{
   int value; //value of the coefficient 
@@ -37,3 +40,5 @@ typedef stuct {
   llnode *current; //points to current node
 }llist;
 */
+
+#endif
