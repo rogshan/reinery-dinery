@@ -27,6 +27,7 @@ void readPolynomial(struct polynomial poly[10])
   return totalNum;
 }
 */
+
 void createNodeList(int max_coefficients)
 {
   struct node *fnNode, *tmp;
