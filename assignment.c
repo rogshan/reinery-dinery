@@ -8,11 +8,7 @@
 
 #include "assignment.h"
 
-struct node 
-  {
-    int num;                        //Data of the node
-    struct node *nextptr;           //Address of the next node
-  }*stnode;
+
 
 void createNodeList(int max_coefficients)
 {
