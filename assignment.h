@@ -15,11 +15,20 @@ double addPoly(double coeff1, double coeff2);
 double subtract(double coeff1, double coeff2);
 double multiplyPoly();
 
+//Definition of polynomial type
 typedef struct
 {
-  double coefficient; //the coefficient
-  int exponent;       //the exponent
-}polynomial
+  polyNode *head; //pointer to the head of the link list
+  polyNode *current; //pointer to the current node
+}polynomial;
+
+//Definition of a link list node
+typedef struct n //n is a dummy variable so that we can use this new data type within the struct itself
+{
+  double coeff; //coefficient of a term
+  int order; //order of x^n term
+  struct n *succesor; //pointer to the next node in the link list
+}polyNode;
 
 struct node 
 {
