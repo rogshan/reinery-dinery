@@ -14,6 +14,7 @@ double addPoly(double coeff1, double coeff2);
 double subtract(double coeff1, double coeff2);
 double multiplyPoly();
 
+/*
 typedef struct{
   //I have no idea how we'll do this since the number of terms is variable
 }polynomial;
@@ -29,3 +30,4 @@ typedef stuct {
   llnode *head; //points to link list head
   llnode *current; //points to current node
 }llist;
+*/
