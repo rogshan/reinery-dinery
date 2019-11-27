@@ -5,6 +5,11 @@
 //Author: Ciara Sookarry
 //Date: 22/11/19
 
+//declarations of functions to create link list
+void createNodeList(int max_coefficients);
+void displayList(int highest_exponent);
+
+//declarations of functions to manipulate polynomial
 double addPoly(double coeff1, double coeff2);
 double subtract(double coeff1, double coeff2);
 double multiplyPoly();
