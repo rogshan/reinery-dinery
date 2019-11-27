@@ -14,6 +14,12 @@ double addPoly(double coeff1, double coeff2);
 double subtract(double coeff1, double coeff2);
 double multiplyPoly();
 
+struct node 
+  {
+    int num;                        //Data of the node
+    struct node *nextptr;           //Address of the next node
+  }*stnode;
+
 /*
 typedef struct{
   //I have no idea how we'll do this since the number of terms is variable
