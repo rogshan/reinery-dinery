@@ -1,85 +1,96 @@
 //assignment.c
 //
 //Contains operations for use on polynomials
-//date: 2019/11/22
-//author: roger shanahan, Ciara Sookarry
+//date: 2019/11/27
+//author: Roger Shanahan, Ciara Sookarry
 
 //I think we'll need to make a polynomial type
 
 #include "assignment.h"
 
+/*
+void readPolynomial(struct polynomial poly[10])
+{
+  int totalNum; //total number of values
 
+  printf("Please enter the total number of terms used in the polynomial");
+  scanf("&d", &totalNum);
+  
+  printf("Please enter the coefficient and exponent\n");
+  for(int i = 0l i<totalNum; i++)
+  {
+    printf("Enter the coeffieient (%d): ", i+1);
+    scanf("%lf", &poly[i].coefficient);
+    printf("Enter the exponent (%d): ", i+1);
+    scanf("%lf", &poly[i].exponent);
+  }
+  return totalNum;
+}
+*/
 
 void createNodeList(int max_coefficients)
 {
-    struct node *fnNode, *tmp;
-    int num, i;
-    stnode = (struct node *)malloc(sizeof(struct node));
-
-    if(stnode == NULL) //check whether the fnnode is NULL and if so no memory allocation
+  struct node *fnNode, *tmp;
+  int num, i;
+  stnode = (struct node *)malloc(sizeof(struct node));
+  if(stnode == NULL) //check whether the fnnode is NULL and if so no memory allocation
+  {
+    printf(" Memory can not be allocated.");
+  }
+  else // reads data for the node through keyboard
+  {
+    printf("Input coefficient for highest value exponent: ");
+    scanf("%d", &num);
+    stnode->num = num;      
+    stnode->nextptr = NULL; // links the address field to NULL
+    tmp = stnode;
+    for(i=2; i<=max_coefficients; i++) // Creating n nodes and adding to linked list
     {
-        printf(" Memory can not be allocated.");
+      fnNode = (struct node *)malloc(sizeof(struct node));
+      if(fnNode == NULL)
+      {
+        printf("Memory can not be allocated.");
+        break;
+      }
+      else
+      {
+        printf("Input coefficient for next value: ");
+        scanf(" %d", &num);
+        fnNode->num = num;      // links the num field of fnNode with num
+        fnNode->nextptr = NULL; // links the address field of fnNode with NULL
+        tmp->nextptr = fnNode; // links previous node i.e. tmp to the fnNode
+        tmp = tmp->nextptr; 
+      }
     }
-    else
-    {
-// reads data for the node through keyboard
-
-        printf("Input coefficient for highest value exponent: ");
-        scanf("%d", &num);
-        stnode->num = num;      
-        stnode->nextptr = NULL; // links the address field to NULL
-        tmp = stnode;
-// Creating n nodes and adding to linked list
-        for(i=2; i<=max_coefficients; i++)
-        {
-            fnNode = (struct node *)malloc(sizeof(struct node));
-            if(fnNode == NULL)
-            {
-                printf("Memory can not be allocated.");
-                break;
-            }
-            else
-            {
-                printf("Input coefficient for next value: ");
-                scanf(" %d", &num);
- 
-                fnNode->num = num;      // links the num field of fnNode with num
-                fnNode->nextptr = NULL; // links the address field of fnNode with NULL
- 
-                tmp->nextptr = fnNode; // links previous node i.e. tmp to the fnNode
-                tmp = tmp->nextptr; 
-            }
-        }
-    }
+  }
 }
 
 void displayList(int highest_exponent)
 {
-    struct node *tmp;
-    if(stnode == NULL)
+  struct node *tmp;
+  if(stnode == NULL)
+  {
+    printf(" List is empty.");
+  }
+  else
+  {
+    tmp = stnode;
+    while(tmp != NULL)
     {
-        printf(" List is empty.");
-    }
-    else
-    {
-        tmp = stnode;
-        while(tmp != NULL)
-        {
-	  for(int i=highest_exponent; i>=0; --i)
+	    for(int i=highest_exponent; i>=0; --i)
 	    {
 	      if(i>0)
-		{
-		  printf("%dx^%d,  ", tmp->num,i);       // prints the data of current node
-		  tmp = tmp->nextptr;                     // advances the position of current node
-		}
+	      {
+	        printf("%dx^%d,  ", tmp->num,i);       // prints the data of current node
+		      tmp = tmp->nextptr;                    // advances the position of current node
+	    	}
 	      else
-		{
-		  printf("%d\n", tmp->num); 
-		}
-		
+		    {
+		      printf("%d\n", tmp->num); 
+	    	}
 	    }
-        }
     }
+  }
 }
 
 //double addPoly(double coeff1, coeff2)

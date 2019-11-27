@@ -1,0 +1,61 @@
+specifications.txt
+a text file which contains the specifications for each operation
+Author: Ciara Sookarry
+Date: 27/11/19
+
+////////////////////////////////
+- createPoly()
+- Creates a polynomial
+- Inputs: the coefficients of each term in the polynomial
+- Output: a polynomial of type polynomial
+
+////////////////////////////////
+- deletePoly()
+- deletes a previously created polynomial
+- Inputs: polynomial to be deleted
+- Outputs: ???????
+
+////////////////////////////////
+- addPoly()
+- adds 2 polynomials together by adding their coefficients
+- Inputs: 2 polynomials with coefficients of type double
+- Output: the sum of the polynomials added together as a single polynomial
+
+////////////////////////////////
+- subtractPoly()
+- subtracts one polynomial from another by subtracting coefficients
+- Inputs: 2 polynomials with coefficients of type double
+- Output: the result of subtracting one polynomial from the other as a poly
+
+////////////////////////////////
+- multiplyPoly()
+- Multiplies a polyinomial by a double
+- Multiplies the coefficient of each term by the double
+- Inputs: - a polynomial with coefficients of type double
+  	  - a double value to multiply by
+- Outputs: the result of multiplying the polynomial by the double
+
+////////////////////////////////
+- dividePoly()
+- Divides a polyinomial by a double
+- Divides the coefficient of each term by the double
+- Inputs: - a polynomial with coefficients of type double
+  	  - a double value to divide by
+- Outputs: the result of dividing the polynomial by the double
+
+///////////////////////////////
+- normalisePoly()
+- Divides each term by coefficient of the highest order term
+- Inputs: a polynomial of order n with coefficients of type double
+- Output: polynomial with coefficient of the highest order term = 1
+
+//////////////////////////////
+- orderPoly()
+- Inputs: a polynomial of order n with coefficients of type double
+- Output: the highest power of x in the polynomial
+
+/////////////////////////////
+- printPoly()
+- Prints a given polynomial to the terminal
+- Inputs: a polynomial of order n with coefficients of type double
+- Output: the polynomial to be printed to the terminal
