@@ -2,7 +2,7 @@
 //
 //Header file containing function declarations and polynomial type definition
 //
-//Author: Ciara Sookarry
+//Author: Ciara Sookarry, Roger Shanahan
 //Date: 22/11/19
 
 //declarations of functions to create link list

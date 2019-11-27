@@ -20,10 +20,9 @@ int main()
   scanf("%d", &highest_exponent);
 
   int max_coefficients = highest_exponent+1;
-      
-    createNodeList(max_coefficients);
-    displayList(highest_exponent);
-    return 0;
+  createNodeList(max_coefficients);
+  displayList(highest_exponent);
+  return 0;
 }
 
 
