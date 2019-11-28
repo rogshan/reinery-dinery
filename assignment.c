@@ -1,9 +1,7 @@
 //assignment.c
 //Contains operations for use on polynomials
 //date: 28/11/2019
-//author: Roger Shanahan, Ciara Sookarry, Anna Shaughnessy
-
-//I think we'll need to make a polynomial type
+//author: Roger Shanahan, Ciara Sookarry, Anna Shaughnessy, Aoife O'Doherty
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -94,12 +92,12 @@ void displayList(int highest_exponent)
   }
 }
 
-//double addPoly(double coeff1, coeff2)
+//double polyadd(polynomial *poly1, polynomial *poly2, polynomial *poly)
 //Adds coefficients of each x^n term
-//Maybe uses a for loop?????
-//Inputs: coefficients of 2 terms
-//Output: sum of 2 coefficents
-//double addPoly(double coeff1, double coeff2)
+//Parameters: *poly1 , *poly2
+//         pointers to valid polynomials
+//Returns: *poly ????
+//         pointer to the resultant polynomial
 
 double polyadd(polynomial *poly1, polynomial *poly2, polynomial *poly) 
 { 
@@ -150,12 +148,10 @@ double polyadd(polynomial *poly1, polynomial *poly2, polynomial *poly)
 }
 
 
-//double subtractPoly(double coeff1, coeff2)
-//Subtractss coefficients of each x^n term
-//Maybe uses a for loop?????
-//Inputs: coefficients of 2 terms
-//Output: sum of 2 coefficents
-//double subtractPoly(double coeff1, double coeff2)
+//double polysubtract(polynomial *poly1, polynomial *poly2, polynomial *poly)
+//Subtracts onr polynomial from another
+//Parameters: 
+//Returns: 
 
 void polysubtract(polynomial *poly1, polynomial *poly2, polynomial *poly) 
 { 
@@ -206,8 +202,8 @@ void polysubtract(polynomial *poly1, polynomial *poly2, polynomial *poly)
 }
 
 //Multiplies each coefficient by a double and returns each
-//Inputs: polynomial type, double constant
-//Output: polynomial with each coefficient multiplied by a double
+//Parameters: polynomial type, double constant
+//Returns: polynomial with each coefficient multiplied by a double
 void multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly) // Function two Multiply two polynomial Numbers Node* multiply(Node* poly1, Node* poly2, Node* poly3) 
 {
   while (poly1 != NULL) 
@@ -251,8 +247,8 @@ void dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly4)
 //Purpose:  Prints the polynoomial given to stdout
 //          Uses a while loop so that it will run through all the values of the polynomial
 //          until it reaches the end (ie NULL)
-//Inputs:   struct Node *polynomial
-//Output:   prints the polynomial to stdout
+//Parameters:   struct Node *polynomial
+//Returns:   prints the polynomial to stdout
 void printPolynomial(polynomial *poly) //printPolynomial function accepts the structure of polynomial
 {
   poly->current = poly->head;           //sets the current polynomial to the head
@@ -266,7 +262,7 @@ void printPolynomial(polynomial *poly) //printPolynomial function accepts the st
       }
       else
       {
-        printf("%lf x^(%d) + ", poly->current->coeff, poly->current->pow); //print the coeffieient and power followed by a poitive sign
+        printf("%lf x^(%d) + ", poly->current->coeff, poly->current->pow); //print the coeffieient and power followed by a positive sign
       }
     }
     else
