@@ -6,56 +6,84 @@ Date: 27/11/19
 ////////////////////////////////
 - createPoly()
 - Creates a polynomial
-- Inputs: the coefficients of each term in the polynomial
+
+- Parameters: the coefficients of each term in the polynomial -AN ARRAY MAYBE?
 - Output: a polynomial of type polynomial
 
 ////////////////////////////////
 - deletePoly()
 - deletes a previously created polynomial
-- Inputs: polynomial to be deleted
-- Outputs: ???????
+
+- Parameters:poly1 - the polynomial to be deleted
+- Returns: void
+
+Steps:
+1) Start at the head node
+2) Make sure the next node isn't the tail node
+3) While the next node isn't the tail
+4) Set the next node equal to a variable
+5) Change the node that the head points to to the node after the next node
+6) Delete the next node
+7) If the next node is the tail, delete the head
+8) Delete the polynomial itself
 
 ////////////////////////////////
 - addPoly()
 - adds 2 polynomials together by adding their coefficients
-- Inputs: 2 polynomials with coefficients of type double
+- Parameters: 2 polynomials with coefficients of type double
 - Output: the sum of the polynomials added together as a single polynomial
 
 ////////////////////////////////
 - subtractPoly()
 - subtracts one polynomial from another by subtracting coefficients
-- Inputs: 2 polynomials with coefficients of type double
+- Parameters: 2 polynomials with coefficients of type double
 - Output: the result of subtracting one polynomial from the other as a poly
 
 ////////////////////////////////
 - multiplyPoly()
 - Multiplies a polyinomial by a double
 - Multiplies the coefficient of each term by the double
-- Inputs: - a polynomial with coefficients of type double
+- Parameters: - a polynomial with coefficients of type double
   	  - a double value to multiply by
-- Outputs: the result of multiplying the polynomial by the double
+- Returns: the result of multiplying the polynomial by the double
 
 ////////////////////////////////
 - dividePoly()
 - Divides a polyinomial by a double
 - Divides the coefficient of each term by the double
-- Inputs: - a polynomial with coefficients of type double
+- Parameters: - a polynomial with coefficients of type double
   	  - a double value to divide by
-- Outputs: the result of dividing the polynomial by the double
+- Returns: the result of dividing the polynomial by the double
 
 ///////////////////////////////
 - normalisePoly()
 - Divides each term by coefficient of the highest order term
-- Inputs: a polynomial of order n with coefficients of type double
-- Output: polynomial with coefficient of the highest order term = 1
+- Parameters: a polynomial of order n with coefficients of type double
+- Returns: polynomial with coefficient of the highest order term = 1
 
 //////////////////////////////
-- orderPoly()
-- Inputs: a polynomial of order n with coefficients of type double
-- Output: the highest power of x in the polynomial
+- returnOrder()
+- returns the highest power of x in the polynomial
+
+- Parameters: *poly1 - pointer to a valid polynomial 
+- Returns: the highest power of x in the polynomial
+
+Steps:
+1) Start at the head node
+2) Go to the next node - this will have the highest power of x
+3) Return the highest power of x
 
 /////////////////////////////
 - printPoly()
 - Prints a given polynomial to the terminal
-- Inputs: a polynomial of order n with coefficients of type double
-- Output: the polynomial to be printed to the terminal
+
+- Parameters: *poly - pointer to a valid polynomial 
+- Returns: void
+
+Steps:
+1) Start at head node
+2) While the current node is not the tail, iterate through each term
+3) If the coefficient of a term >0 and the next node is the tail
+    print the term alone
+4) If the coefficient of a term >0 and the next node isn't the tail
+    print the 
