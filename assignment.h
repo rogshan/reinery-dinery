@@ -38,18 +38,4 @@ struct node
   struct node *nextptr;           //Address of the next node
 }*stnode;
 
-/*
-//creation of link list node - MIGHT BE WRONG
-typedef struct n{
-  int value; //value of the coefficient 
-  struct n *successor; //pointer to next value
-}llnode; 
-
-//creation of link list
-typedef stuct {
-  llnode *head; //points to link list head
-  llnode *current; //points to current node
-}llist;
-*/
-
 #endif
