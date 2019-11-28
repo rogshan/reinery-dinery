@@ -6,14 +6,16 @@
 //Date: 22/11/19
 #ifndef ASSIGNMENT_H
 #define ASSIGNMENT_H
+
 //declarations of functions to create link list
 void createNodeList(int max_coefficients);
 void displayList(int highest_exponent);
 
 //declarations of functions to manipulate polynomial
-double addPoly(double coeff1, double coeff2);
-double subtract(double coeff1, double coeff2);
-double multiplyPoly();
+double polyadd(struct Node *poly1, struct Node *poly2, struct Node *poly);
+double polysubtract(struct Node *poly1, struct Node *poly2, struct Node *poly);
+double multiplyPoly(struct Node *poly1, struct Node *poly2, struct Node *poly);
+double dividePoly(struct Node *poly1, struct Node *poly2, struct Node *poly);
 
 //Definition of a link list node
 typedef struct n //n is a dummy variable so that we can use this new data type within the struct itself
