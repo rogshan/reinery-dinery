@@ -292,6 +292,29 @@ int returnOrder(polynomial *poly1)
   return poly1->current->pow;
 }
 
+double normalisePoly(polynomial *poly1, polynomial *poly5)
+{ 
+    // Create two pointer and store the address of the polynomial
+    int coeff;
+    polyNode *ptr1;
+    ptr1 = poly1;
+    //poly->*head->coeff ??
+    poly->current->coeff=int a;
+    while (ptr1 != NULL) { 
+             
+            // Divide the coefficients of the polynomials
+            coeff = ptr1->coeff / a;  
+  
+            // Invoke addnode function to create a newnode by passing three parameters 
+            poly5 = addnode(poly5, coeff, power); 
+  
+            // move the pointer of the polynomial to get its next term 
+            ptr1 = ptr1->next; 
+    }
+    return poly5; 
+}     
+
+
 
 /////////////////////////////////////
 // deletePoly()
