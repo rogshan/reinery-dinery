@@ -1,11 +1,12 @@
 //assignment.c
-//
 //Contains operations for use on polynomials
-//date: 2019/11/27
-//author: Roger Shanahan, Ciara Sookarry
+//date: 28/11/2019
+//author: Roger Shanahan, Ciara Sookarry, Anna Shaughnessy
 
 //I think we'll need to make a polynomial type
 
+#include <stdlib.h>
+#include <stdio.h>
 #include "assignment.h"
 
 /*
@@ -82,7 +83,7 @@ void displayList(int highest_exponent)
 	      if(i>0)
 	      {
 	        printf("%dx^%d,  ", tmp->num,i);       // prints the data of current node
-		      tmp = tmp->nextptr;                    // advances the position of current node
+		tmp = tmp->nextptr;                    // advances the position of current node
 	    	}
 	      else
 		    {
@@ -104,8 +105,7 @@ double polyadd(struct Node *poly1, struct Node *poly2, struct Node *poly)
 { 
 while(poly1->nextptr && poly2->nextptr) 
     { 
-        // If power of 1st polynomial is greater then 2nd, then store 1st as it is 
-        // and move its pointer 
+        // If power of 1st polynomial is greater then 2nd, then store 1st as it is and move its pointer 
         if(poly1->pow > poly2->pow) 
         { 
             poly->pow = poly1->pow; 
@@ -113,8 +113,7 @@ while(poly1->nextptr && poly2->nextptr)
             poly1 = poly1->next; 
         } 
           
-        // If power of 2nd polynomial is greater then 1st, then store 2nd as it is 
-        // and move its pointer 
+        // If power of 2nd polynomial is greater then 1st, then store 2nd as it is and move its pointer 
         else if(poly1->pow < poly2->pow) 
         { 
             poly->pow = poly2->pow; 
@@ -170,8 +169,7 @@ double polysubtract(struct Node *poly1, struct Node *poly2, struct Node *poly)
 { 
 while(poly1->nextptr && poly2->nextptr) 
     { 
-        // If power of 1st polynomial is greater then 2nd, then store 1st as it is 
-        // and move its pointer 
+        // If power of 1st polynomial is greater then 2nd, then store 1st as it is and move its pointer 
         if(poly1->pow > poly2->pow) 
         { 
             poly->pow = poly1->pow; 
@@ -179,8 +177,7 @@ while(poly1->nextptr && poly2->nextptr)
             poly1 = poly1->next; 
         } 
           
-        // If power of 2nd polynomial is greater then 1st, then store 2nd as it is 
-        // and move its pointer 
+        // If power of 2nd polynomial is greater then 1st, then store 2nd as it is and move its pointer 
         else if(poly1->pow < poly2->pow) 
         { 
             poly->pow = poly2->pow; 
@@ -222,19 +219,14 @@ while(poly1->next || poly2->next)
     } 
 }
 
-//double multiplyPoly(polynomial poly, double constant)
 //Multiplies each coefficient by a double and returns each
 //Inputs: polynomial type, double constant
 //Output: polynomial with each coefficient multiplied by a double
 double multiplyPoly(struct Node *poly1, struct Node *poly2, struct Node *poly)
 {
-// Function two Multiply two polynomial Numbers 
-//Node* multiply(Node* poly1, Node* poly2, 
-//               Node* poly3) 
-{ 
-  
-    // Create two pointer and store the 
-    // address of 1st and 2nd polynomials 
+// Function two Multiply two polynomial Numbers Node* multiply(Node* poly1, Node* poly2, Node* poly3) 
+{
+    // Create two pointer and store the address of 1st and 2nd polynomials 
     Node *ptr1, *ptr2; 
     ptr1 = poly1; 
     ptr2 = poly2; 
@@ -242,103 +234,41 @@ double multiplyPoly(struct Node *poly1, struct Node *poly2, struct Node *poly)
         while (ptr2 != NULL) { 
             int coeff, power; 
   
-            // Multiply the coefficient of both 
-            // polynomials and store it in coeff 
+            // Multiply the coefficient of both polynomials and store it in coeff 
             coeff = ptr1->coeff * ptr2->coeff; 
   
-            // Add the powerer of both polynomials 
-            // and store it in power 
+            // Add the powerer of both polynomials and store it in power 
             power = ptr1->power + ptr2->power; 
   
-            // Invoke addnode function to create 
-            // a newnode by passing three parameters 
+            // Invoke addnode function to create  a newnode by passing three parameters 
             poly3 = addnode(poly3, coeff, power); 
   
-            // move the pointer of 2nd polynomial 
-            // two get its next term 
+            // move the pointer of 2nd polynomial  two get its next term 
             ptr2 = ptr2->next; 
         } 
   
-        // Move the 2nd pointer to the 
-        // starting point of 2nd polynomial 
+        // Move the 2nd pointer to the starting point of 2nd polynomial 
         ptr2 = poly2; 
   
         // move the pointer of 1st polynomial 
         ptr1 = ptr1->next; 
     } 
   
-    // this function will be invoke to add 
-    // the coefficient of the elements 
-    // having same powerer from the resultant linked list 
+    // this function will be invoke to add the coefficient of the elements having same powerer from the resultant linked list 
     removeDuplicates(poly3); 
     return poly3; 
 }     
 }
 
-
-//Multiplies each coefficient by a double and returns each
-//Inputs: polynomial type, double constant
-//Output: polynomial with each coefficient multiplied by a double
-double multiplyPoly(struct Node *poly1, struct Node *poly2, struct Node *poly)
-{
-// Function two Multiply two polynomial Numbers 
-//Node* multiply(Node* poly1, Node* poly2, 
-//               Node* poly3) 
-{ 
-  
-    // Create two pointer and store the 
-    // address of 1st and 2nd polynomials 
-    Node *ptr1, *ptr2; 
-    ptr1 = poly1; 
-    ptr2 = poly2; 
-    while (ptr1 != NULL) { 
-        while (ptr2 != NULL) { 
-            int coeff, power; 
-  
-            // Multiply the coefficient of both 
-            // polynomials and store it in coeff 
-            coeff = ptr1->coeff * ptr2->coeff; 
-  
-            // Add the powerer of both polynomials 
-            // and store it in power 
-            power = ptr1->power + ptr2->power; 
-  
-            // Invoke addnode function to create 
-            // a newnode by passing three parameters 
-            poly3 = addnode(poly3, coeff, power); 
-  
-            // move the pointer of 2nd polynomial 
-            // two get its next term 
-            ptr2 = ptr2->next; 
-        } 
-  
-        // Move the 2nd pointer to the 
-        // starting point of 2nd polynomial 
-        ptr2 = poly2; 
-  
-        // move the pointer of 1st polynomial 
-        ptr1 = ptr1->next; 
-    } 
-  
-    // this function will be invoke to add 
-    // the coefficient of the elements 
-    // having same powerer from the resultant linked list 
-    removeDuplicates(poly3); 
-    return poly3; 
-}     
-}
 
 
 //Divides two polynominals
 double dividePoly(struct Node *poly1, struct Node *poly2, struct Node *poly)
 {
-// Function two Multiply two polynomial Numbers 
-//Node* multiply(Node* poly1, Node* poly2, 
-//               Node* poly3) 
+// Function two Multiply two polynomial Numbers Node* multiply(Node* poly1, Node* poly2,  Node* poly3) 
 { 
   
-    // Create two pointer and store the 
-    // address of 1st and 2nd polynomials 
+    // Create two pointer and store the address of 1st and 2nd polynomials 
     Node *ptr1, *ptr2; 
     ptr1 = poly1; 
     ptr2 = poly2; 
@@ -346,34 +276,27 @@ double dividePoly(struct Node *poly1, struct Node *poly2, struct Node *poly)
         while (ptr2 != NULL) { 
             int coeff, power; 
   
-            // Divide the coefficient of both 
-            // polynomials and store it in coeff 
+            // Divide the coefficient of both polynomials and store it in coeff 
             coeff = ptr1->coeff / ptr2->coeff; 
   
-            // Subtract the powerer of both polynomials 
-            // and store it in power 
+            // Subtract the power of both polynomials and store it in power 
             power = ptr1->power - ptr2->power; 
   
-            // Invoke addnode function to create 
-            // a newnode by passing three parameters 
+            // Invoke addnode function to create a newnode by passing three parameters 
             poly4 = addnode(poly4, coeff, power); 
   
-            // move the pointer of 2nd polynomial 
-            // two get its next term 
+            // move the pointer of 2nd polynomial two get its next term 
             ptr2 = ptr2->next; 
         } 
   
-        // Move the 2nd pointer to the 
-        // starting point of 2nd polynomial 
+        // Move the 2nd pointer to the starting point of 2nd polynomial 
         ptr2 = poly2; 
   
         // move the pointer of 1st polynomial 
         ptr1 = ptr1->next; 
     } 
   
-    // this function will be invoke to add 
-    // the coefficient of the elements 
-    // having same powerer from the resultant linked list 
+    // this function will be invoke to add  the coefficient of the elements  having same powerer from the resultant linked list 
     removeDuplicates(poly4); 
     return poly4; 
 }     
