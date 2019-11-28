@@ -16,6 +16,7 @@ double polyadd(polynomial *poly1, polynomial *poly2, polynomial *poly);
 double polysubtract(polynomial *poly1, polynomial *poly2, polynomial *poly);
 double multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
 double dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
+double normalisePoly(polynomial *poly1, polynomial *poly5);
 
 void deletePoly(polynomial *poly1);
 int returnOrder(polynomial *poly1);
