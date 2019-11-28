@@ -17,6 +17,7 @@ double polysubtract(polynomial *poly1, polynomial *poly2, polynomial *poly);
 double multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
 double dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
 
+void deletePoly(polynomial *poly1);
 int returnOrder(polynomial *poly1);
 
 //Definition of a link list node
