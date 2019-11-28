@@ -1,9 +1,7 @@
-# IGNORE
-*.o
-*.c~
-*.#
+# IGNORE EVERYTHING
+*
 
-#DON'T IGNORE
+# EXCEPT THESE
 !*.c
 !*.h
 !*.txt
