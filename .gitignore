@@ -1,7 +1,8 @@
 # IGNORE
 *.o
 *.c~
-*#
+*.#
+
 #DON'T IGNORE
 !*.c
 !*.h
