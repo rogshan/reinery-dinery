@@ -16,20 +16,21 @@ double polyadd(struct Node *poly1, struct Node *poly2, struct Node *poly);
 double polysubtract(struct Node *poly1, struct Node *poly2, struct Node *poly);
 double multiplyPoly(struct Node *poly1, struct Node *poly2, struct Node *poly);
 double dividePoly(struct Node *poly1, struct Node *poly2, struct Node *poly);
+int returnOrder(polynomial poly1);
 
 //Definition of a link list node
 typedef struct n //n is a dummy variable so that we can use this new data type within the struct itself
 {
   double coeff; //coefficient of a term
   int pow; //power of x^n term
-  struct n *succesor; //pointer to the next node in the link list
+  struct n *successor; //pointer to the next node in the link list
 }stnode;
 
 //Definition of polynomial type
 typedef struct
 {
-  stnode *head; //pointer to the head of the link list
-  stnode *current; //pointer to the current node
+  polyNode *head; //pointer to the head of the link list
+  polyNode *current; //pointer to the current node
 }polynomial;
 
 #endif
