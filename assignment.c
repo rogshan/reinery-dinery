@@ -83,7 +83,7 @@ void displayList(int highest_exponent)
 	      if(i>0)
 	      {
 	        printf("%dx^%d,  ", tmp->num,i);       // prints the data of current node
-		tmp = tmp->nextptr;                    // advances the position of current node
+		      tmp = tmp->nextptr;                    // advances the position of current node
 	    	}
 	      else
 		    {
@@ -103,9 +103,9 @@ void displayList(int highest_exponent)
 
 double polyadd(struct Node *poly1, struct Node *poly2, struct Node *poly) 
 { 
-while(poly1->nextptr && poly2->nextptr) 
-    { 
-        // If power of 1st polynomial is greater then 2nd, then store 1st as it is and move its pointer 
+  while(poly1->nextptr && poly2->nextptr) 
+  { 
+    // If power of 1st polynomial is greater then 2nd, then store 1st as it is and move its pointer 
         if(poly1->pow > poly2->pow) 
         { 
             poly->pow = poly1->pow; 
@@ -300,4 +300,36 @@ double dividePoly(struct Node *poly1, struct Node *poly2, struct Node *poly)
     removeDuplicates(poly4); 
     return poly4; 
 }     
+}
+
+//Name:     void printPolynomial(struct Node *poly)
+//Purpose:  Prints the polynoomial given to stdout
+//          Uses a while loop so that it will run through all the values of the polynomial
+//          until it reaches the end (ie NULL)
+//Inputs:   struct Node *polynomial
+//Output:   prints the polynomial to stdout
+
+void printPolynomial(struct Node *poly) //printPolynomial function accepts the structure of polynomial
+{
+  poly->current = poly->head;           //sets the current polynomial to the head
+  while(poly->current != NULL)          //while current state is not NULL
+  {
+    if((poly->current->coeff)>0)        //if the coefficient is greater than zero
+    {
+      if(poly->next = NULL)
+      {
+        fprintf("%lf x^(%d) ", poly->current->coeff, poly->current->power);
+      }
+      else
+      {
+        fprintf("%lf x^(%d) + ", poly->current->coeff, poly->current->power); //print the coeffieient and power followed by a poitive sign
+      }
+    }
+    else
+    {
+      fprintf("%lf x^(%d) ", poly->current->coeff, poly->current->power);   //print the coeffieient and power with no sign
+                                                                            //this is because if the value is negative the value for the coeffieient will already contain a negative sign
+    } 
+    poly->current = poly->next;         //move the polynomial to the next value
+  }
 }
