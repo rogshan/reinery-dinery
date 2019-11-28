@@ -21,9 +21,9 @@ double dividePoly(struct Node *poly1, struct Node *poly2, struct Node *poly);
 typedef struct n //n is a dummy variable so that we can use this new data type within the struct itself
 {
   double coeff; //coefficient of a term
-  int order; //order of x^n term
+  int pow; //power of x^n term
   struct n *succesor; //pointer to the next node in the link list
-}polyNode;
+}stnode;
 
 //Definition of polynomial type
 typedef struct
@@ -31,11 +31,5 @@ typedef struct
   polyNode *head; //pointer to the head of the link list
   polyNode *current; //pointer to the current node
 }polynomial;
-
-struct node 
-{
-  int num;                        //Data of the node
-  struct node *nextptr;           //Address of the next node
-}*stnode;
 
 #endif
