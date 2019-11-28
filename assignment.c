@@ -104,57 +104,49 @@ void displayList(int highest_exponent)
 double polyadd(polynomial *poly1, polynomial *poly2, polynomial *poly) 
 { 
   while(poly1->nextptr && poly2->nextptr) 
-  { 
-    // If power of 1st polynomial is greater then 2nd, then store 1st as it is and move its pointer 
-        if(poly1->pow > poly2->pow) 
-        { 
-            poly->pow = poly1->pow; 
-            poly->coeff = poly1->coeff; 
-            poly1 = poly1->next; 
-        } 
-          
-        // If power of 2nd polynomial is greater then 1st, then store 2nd as it is and move its pointer 
-        else if(poly1->pow < poly2->pow) 
-        { 
-            poly->pow = poly2->pow; 
-            poly->coeff = poly2->coeff; 
-            poly2 = poly2->next; 
-        } 
-          
-        // If power of both polynomial numbers is same then add their coefficients 
-        else
-        { 
-            poly->pow = poly1->pow; 
-            poly->coeff = poly1->coeff+poly2->coeff; 
-            poly1 = poly1->next; 
-            poly2 = poly2->next; 
-        } 
-          
-        // Dynamically create new node 
-        poly->next = (polynomial *)malloc(sizeof(polynomial)); 
-        poly = poly->next; 
-        poly->next = NULL; 
-    } 
-while(poly1->next || poly2->next) 
+  {
+    if(poly1->pow > poly2->pow) // If power of 1st polynomial is greater then 2nd, then store 1st as it is and move its pointer 
     { 
-        if(poly1->next) 
-        { 
-            poly->pow = poly1->pow; 
-            poly->coeff = poly1->coeff; 
-            poly1 = poly1->next; 
-        } 
-        if(poly2->next) 
-        { 
-            poly->pow = poly2->pow; 
-            poly->coeff = poly2->coeff; 
-            poly2 = poly2->next; 
-        } 
-        poly->next = (polynomial *)malloc(sizeof(polynomial)); 
-        poly = poly->next; 
-        poly->next = NULL; 
+      poly->pow = poly1->pow; 
+      poly->coeff = poly1->coeff; 
+      poly1 = poly1->next; 
     } 
-   
-  
+    else if(poly1->pow < poly2->pow) // If power of 2nd polynomial is greater then 1st, then store 2nd as it is and move its pointer
+    { 
+      poly->pow = poly2->pow; 
+      poly->coeff = poly2->coeff; 
+      poly2 = poly2->next; 
+    } 
+    else // If power of both polynomial numbers is same then add their coefficients 
+    { 
+      poly->pow = poly1->pow; 
+      poly->coeff = poly1->coeff+poly2->coeff; 
+      poly1 = poly1->next; 
+      poly2 = poly2->next; 
+    }  
+    // Dynamically create new node 
+    poly->next = (polynomial *)malloc(sizeof(polynomial)); 
+    poly = poly->next; 
+    poly->next = NULL; 
+  } 
+  while(poly1->next || poly2->next) 
+  { 
+    if(poly1->next) 
+    { 
+      poly->pow = poly1->pow; 
+      poly->coeff = poly1->coeff; 
+      poly1 = poly1->next; 
+    } 
+    if(poly2->next) 
+    { 
+      poly->pow = poly2->pow; 
+      poly->coeff = poly2->coeff; 
+      poly2 = poly2->next; 
+    } 
+    poly->next = (polynomial *)malloc(sizeof(polynomial)); 
+    poly = poly->next; 
+    poly->next = NULL; 
+  } 
 }
 
 
@@ -167,56 +159,50 @@ while(poly1->next || poly2->next)
 
 double polysubtract(polynomial *poly1, polynomial *poly2, polynomial *poly) 
 { 
-while(poly1->nextptr && poly2->nextptr) 
+  while(poly1->nextptr && poly2->nextptr) 
+  { 
+    if(poly1->pow > poly2->pow) // If power of 1st polynomial is greater then 2nd, then store 1st as it is and move its pointer 
     { 
-        // If power of 1st polynomial is greater then 2nd, then store 1st as it is and move its pointer 
-        if(poly1->pow > poly2->pow) 
-        { 
-            poly->pow = poly1->pow; 
-            poly->coeff = poly1->coeff; 
-            poly1 = poly1->next; 
-        } 
-          
-        // If power of 2nd polynomial is greater then 1st, then store 2nd as it is and move its pointer 
-        else if(poly1->pow < poly2->pow) 
-        { 
-            poly->pow = poly2->pow; 
-            poly->coeff = poly2->coeff; 
-            poly2 = poly2->next; 
-        } 
-          
-        // If power of both polynomial numbers is same then subtract their coefficients 
-        else
-        { 
-            poly->pow = poly1->pow; 
-            poly->coeff = poly1->coeff-poly2->coeff; 
-            poly1 = poly1->next; 
-            poly2 = poly2->next; 
-        } 
-          
-        // Dynamically create new node 
-        poly->next = (polynomial *)malloc(sizeof(polynomial)); 
-        poly = poly->next; 
-        poly->next = NULL; 
-    } 
-while(poly1->next || poly2->next) 
+      poly->pow = poly1->pow; 
+      poly->coeff = poly1->coeff; 
+      poly1 = poly1->next; 
+    }   
+    else if(poly1->pow < poly2->pow) // If power of 2nd polynomial is greater then 1st, then store 2nd as it is and move its pointer 
     { 
-        if(poly1->next) 
-        { 
-            poly->pow = poly1->pow; 
-            poly->coeff = poly1->coeff; 
-            poly1 = poly1->next; 
-        } 
-        if(poly2->next) 
-        { 
-            poly->pow = poly2->pow; 
-            poly->coeff = poly2->coeff; 
-            poly2 = poly2->next; 
-        } 
-        poly->next = (polynomial *)malloc(sizeof(polynomial)); 
-        poly = poly->next; 
-        poly->next = NULL; 
+      poly->pow = poly2->pow; 
+      poly->coeff = poly2->coeff; 
+      poly2 = poly2->next; 
+    }   
+    else // If power of both polynomial numbers is same then subtract their coefficients 
+    { 
+      poly->pow = poly1->pow; 
+      poly->coeff = poly1->coeff-poly2->coeff; 
+      poly1 = poly1->next; 
+      poly2 = poly2->next; 
+    }     
+    // Dynamically create new node 
+    poly->next = (polynomial *)malloc(sizeof(polynomial)); 
+    poly = poly->next; 
+    poly->next = NULL; 
+  } 
+  while(poly1->next || poly2->next) 
+  { 
+    if(poly1->next) 
+    { 
+      poly->pow = poly1->pow; 
+      poly->coeff = poly1->coeff; 
+      poly1 = poly1->next; 
     } 
+    if(poly2->next) 
+    { 
+      poly->pow = poly2->pow; 
+      poly->coeff = poly2->coeff; 
+      poly2 = poly2->next; 
+    } 
+    poly->next = (polynomial *)malloc(sizeof(polynomial)); 
+    poly = poly->next; 
+    poly->next = NULL; 
+  } 
 }
 
 //Multiplies each coefficient by a double and returns each
@@ -225,7 +211,7 @@ while(poly1->next || poly2->next)
 double multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly)
 {
 // Function two Multiply two polynomial Numbers Node* multiply(Node* poly1, Node* poly2, Node* poly3) 
-{
+
     // Create two pointer and store the address of 1st and 2nd polynomials 
     polyNode *ptr1, *ptr2; 
     ptr1 = poly1; 
@@ -257,7 +243,7 @@ double multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly)
     // this function will be invoke to add the coefficient of the elements having same powerer from the resultant linked list 
     removeDuplicates(poly3); 
     return poly3; 
-}     
+     
 }
 
 
@@ -265,8 +251,8 @@ double multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly)
 //Divides two polynominals
 double dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly4)
 {
-// Function two Multiply two polynomial Numbers Node* multiply(Node* poly1, Node* poly2,  Node* poly) 
-{ 
+    // Function two Multiply two polynomial Numbers Node* multiply(Node* poly1, Node* poly2,  Node* poly) 
+  { 
   
     // Create two pointer and store the address of 1st and 2nd polynomials 
     polyNode *ptr1, *ptr2; 
@@ -299,7 +285,7 @@ double dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly4)
     // this function will be invoke to add  the coefficient of the elements  having same powerer from the resultant linked list 
     removeDuplicates(poly4); 
     return poly4; 
-}     
+  }     
 }
 
 //Name:     void printPolynomial(struct Node *poly)
