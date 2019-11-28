@@ -17,6 +17,8 @@ double polysubtract(polynomial *poly1, polynomial *poly2, polynomial *poly);
 double multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
 double dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
 
+int returnOrder(polynomial *poly1);
+
 //Definition of a link list node
 typedef struct n //n is a dummy variable so that we can use this new data type within the struct itself
 {
