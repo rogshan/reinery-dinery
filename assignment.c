@@ -289,7 +289,7 @@ double dividePoly(struct Node *poly1, struct Node *poly2, struct Node *poly)
             ptr2 = ptr2->next; 
         } 
   
-        // Move the 2nd pointer to the starting point of 2nd polynomial 
+        //   Move the 2nd pointer to the starting point of 2nd polynomial 
         ptr2 = poly2; 
   
         // move the pointer of 1st polynomial 
