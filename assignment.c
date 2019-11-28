@@ -101,7 +101,7 @@ void displayList(int highest_exponent)
 //Output: sum of 2 coefficents
 //double addPoly(double coeff1, double coeff2)
 
-double polyadd(struct Node *poly1, struct Node *poly2, struct Node *poly) 
+double polyadd(polynomial *poly1, polynomial *poly2, polynomial *poly) 
 { 
 while(poly1->nextptr && poly2->nextptr) 
     { 
@@ -131,7 +131,7 @@ while(poly1->nextptr && poly2->nextptr)
         } 
           
         // Dynamically create new node 
-        poly->next = (struct Node *)malloc(sizeof(struct Node)); 
+        poly->next = (polynomial *)malloc(sizeof(polynomial)); 
         poly = poly->next; 
         poly->next = NULL; 
     } 
@@ -149,7 +149,7 @@ while(poly1->next || poly2->next)
             poly->coeff = poly2->coeff; 
             poly2 = poly2->next; 
         } 
-        poly->next = (struct Node *)malloc(sizeof(struct Node)); 
+        poly->next = (polynomial *)malloc(sizeof(polynomial)); 
         poly = poly->next; 
         poly->next = NULL; 
     } 
@@ -165,7 +165,7 @@ while(poly1->next || poly2->next)
 //Output: sum of 2 coefficents
 //double subtractPoly(double coeff1, double coeff2)
 
-double polysubtract(struct Node *poly1, struct Node *poly2, struct Node *poly) 
+double polysubtract(polynomial *poly1, polynomial *poly2, polynomial *poly) 
 { 
 while(poly1->nextptr && poly2->nextptr) 
     { 
@@ -195,7 +195,7 @@ while(poly1->nextptr && poly2->nextptr)
         } 
           
         // Dynamically create new node 
-        poly->next = (struct Node *)malloc(sizeof(struct Node)); 
+        poly->next = (polynomial *)malloc(sizeof(polynomial)); 
         poly = poly->next; 
         poly->next = NULL; 
     } 
@@ -213,7 +213,7 @@ while(poly1->next || poly2->next)
             poly->coeff = poly2->coeff; 
             poly2 = poly2->next; 
         } 
-        poly->next = (struct Node *)malloc(sizeof(struct Node)); 
+        poly->next = (polynomial *)malloc(sizeof(polynomial)); 
         poly = poly->next; 
         poly->next = NULL; 
     } 
@@ -222,12 +222,12 @@ while(poly1->next || poly2->next)
 //Multiplies each coefficient by a double and returns each
 //Inputs: polynomial type, double constant
 //Output: polynomial with each coefficient multiplied by a double
-double multiplyPoly(struct Node *poly1, struct Node *poly2, struct Node *poly)
+double multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly)
 {
 // Function two Multiply two polynomial Numbers Node* multiply(Node* poly1, Node* poly2, Node* poly3) 
 {
     // Create two pointer and store the address of 1st and 2nd polynomials 
-    Node *ptr1, *ptr2; 
+    polyNode *ptr1, *ptr2; 
     ptr1 = poly1; 
     ptr2 = poly2; 
     while (ptr1 != NULL) { 
@@ -263,13 +263,13 @@ double multiplyPoly(struct Node *poly1, struct Node *poly2, struct Node *poly)
 
 
 //Divides two polynominals
-double dividePoly(struct Node *poly1, struct Node *poly2, struct Node *poly)
+double dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly4)
 {
-// Function two Multiply two polynomial Numbers Node* multiply(Node* poly1, Node* poly2,  Node* poly3) 
+// Function two Multiply two polynomial Numbers Node* multiply(Node* poly1, Node* poly2,  Node* poly) 
 { 
   
     // Create two pointer and store the address of 1st and 2nd polynomials 
-    Node *ptr1, *ptr2; 
+    polyNode *ptr1, *ptr2; 
     ptr1 = poly1; 
     ptr2 = poly2; 
     while (ptr1 != NULL) { 
@@ -302,20 +302,3 @@ double dividePoly(struct Node *poly1, struct Node *poly2, struct Node *poly)
 }     
 }
 
-// int returnOrder()
-// returns the order of the polynomial
-// i.e. the highest power of x^n with a coefficient != 0
-//
-//Parameter: polynomial of type polynomial
-//Returns: integer value of highest power
-int returnOrder(polynomial *poly1)
-{
-  //make the head the current node
-  polynomial->current = polynomial->head;
-  //move to the next node
-  //this will be the term with the highest power...
-  // ...becuase of the order we chose to print in
-  polynomial->current = polynomial->current->nextptr;
-  //return the power associated with this first node
-  return polynomial->current->pow;
-}
