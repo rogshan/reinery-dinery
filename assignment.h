@@ -28,8 +28,8 @@ typedef struct n //n is a dummy variable so that we can use this new data type w
 //Definition of polynomial type
 typedef struct
 {
-  polyNode *head; //pointer to the head of the link list
-  polyNode *current; //pointer to the current node
+  stnode *head; //pointer to the head of the link list
+  stnode *current; //pointer to the current node
 }polynomial;
 
 #endif
