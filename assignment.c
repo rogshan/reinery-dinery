@@ -3,8 +3,6 @@
 //date: 28/11/2019
 //author: Roger Shanahan, Ciara Sookarry, Anna Shaughnessy
 
-//I think we'll need to make a polynomial type
-
 #include <stdlib.h>
 #include <stdio.h>
 #include "assignment.h"
