@@ -338,3 +338,31 @@ int returnOrder(polynomial *poly1)
   return polynomial->current->pow;
 }
 
+
+/////////////////////////////////////
+// deletePoly()
+// deletes the entire polynomial with the head-node named head
+//
+// parameter:head -  head of a valid list
+// return: void
+////////////////////////////////////
+void deletePoly(polynomial *poly1)
+{
+  polynomial *next;
+
+  //delete all nodes until list is empty
+  //starting at the head
+  poly1->current = poly1->head;
+
+  //delete all nodes that are not the head or tail
+  while(poly1->head->successor != NULL){
+    next = poly1->head->successor;
+    poly1->head->successor = poly1->head->successor->successor;
+    free(next);
+  }
+  //link list is now empty
+  //now delete head
+  free(poly1->head);
+  //and delete the list itself
+  free(poly1)
+}
