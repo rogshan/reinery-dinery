@@ -3,6 +3,8 @@
 //date: 28/11/2019
 //author: Roger Shanahan, Ciara Sookarry, Anna Shaughnessy
 
+//I think we'll need to make a polynomial type
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "assignment.h"
@@ -300,6 +302,25 @@ double dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly4)
 }     
 }
 
+<<<<<<< HEAD
+// int returnOrder()
+// returns the order of the polynomial
+// i.e. the highest power of x^n with a coefficient != 0
+//
+//Parameter: polynomial of type polynomial
+//Returns: integer value of highest power
+int returnOrder(polynomial *poly1)
+{
+  //make the head the current node
+  polynomial->current = polynomial->head;
+  //move to the next node
+  //this will be the term with the highest power...
+  // ...becuase of the order we chose to print in
+  polynomial->current = polynomial->current->nextptr;
+  //return the power associated with this first node
+  return polynomial->current->pow;
+}
+=======
 
 /********
 double normalisePoly(polynomial *poly1, polynomial *poly5)
@@ -337,3 +358,4 @@ double normalisePoly(polynomial *poly1, polynomial *poly5)
 }
 
 ********/
+>>>>>>> 99b840614dea60f137e96435fe5773187d4f25c6
