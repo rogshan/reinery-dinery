@@ -308,14 +308,14 @@ double dividePoly(struct Node *poly1, struct Node *poly2, struct Node *poly)
 //
 //Parameter: polynomial of type polynomial
 //Returns: integer value of highest power
-int returnOrder(polynomial poly1)
+int returnOrder(polynomial *poly1)
 {
   //make the head the current node
   polynomial->current = polynomial->head;
   //move to the next node
   //this will be the term with the highest power...
   // ...becuase of the order we chose to print in
-  polynomial->current = polynomial->current->successor;
+  polynomial->current = polynomial->current->nextptr;
   //return the power associated with this first node
   return polynomial->current->pow;
 }
