@@ -301,3 +301,21 @@ double dividePoly(struct Node *poly1, struct Node *poly2, struct Node *poly)
     return poly4; 
 }     
 }
+
+// int returnOrder()
+// returns the order of the polynomial
+// i.e. the highest power of x^n with a coefficient != 0
+//
+//Parameter: polynomial of type polynomial
+//Returns: integer value of highest power
+int returnOrder(polynomial poly1)
+{
+  //make the head the current node
+  polynomial->current = polynomial->head;
+  //move to the next node
+  //this will be the term with the highest power...
+  // ...becuase of the order we chose to print in
+  polynomial->current = polynomial->current->successor;
+  //return the power associated with this first node
+  return polynomial->current->pow;
+}
