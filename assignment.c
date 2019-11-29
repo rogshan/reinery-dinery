@@ -31,7 +31,7 @@ void createNodeList(int max_coefficients)
 {
   struct node *fnNode, *tmp;
   int num, i;
-  stnode = (struct node *)malloc(sizeof(struct node));
+  stNode = (struct node *)malloc(sizeof(struct node));
   if(stnode == NULL) //check whether the fnnode is NULL and if so no memory allocation
   {
     printf(" Memory can not be allocated.");
