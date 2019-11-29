@@ -40,8 +40,8 @@ void createNodeList(int max_coefficients)
   {
     printf("Input coefficient for highest value exponent: ");
     scanf("%d", &num);
-    stnode->num = num;      
-    stnode->nextptr = NULL; // links the address field to NULL
+    num = stnode->current->num;      
+    stnode->current->nextptr = NULL; // links the address field to NULL
     tmp = stnode;
     for(i=2; i<=max_coefficients; i++) // Creating n nodes and adding to linked list
     {
@@ -56,9 +56,9 @@ void createNodeList(int max_coefficients)
         printf("Input coefficient for next value: ");
         scanf(" %d", &num);
         fnNode->num = num;      // links the num field of fnNode with num
-        fnNode->nextptr = NULL; // links the address field of fnNode with NULL
-        tmp->nextptr = fnNode; // links previous node i.e. tmp to the fnNode
-        tmp = tmp->nextptr; 
+        fnNode->current->nextptr = NULL; // links the address field of fnNode with NULL
+        tmp->current->nextptr = fnNode; // links previous node i.e. tmp to the fnNode
+        tmp = tmp->current->nextptr; 
       }
     }
   }
@@ -67,25 +67,25 @@ void createNodeList(int max_coefficients)
 void displayList(int highest_exponent)
 {
   struct node *tmp;
-  if(stnode == NULL)
+  if(stNode == NULL)
   {
     printf(" List is empty.");
   }
   else
   {
-    tmp = stnode;
+    tmp = stNode;
     while(tmp != NULL)
     {
 	    for(int i=highest_exponent; i>=0; --i)
 	    {
 	      if(i>0)
 	      {
-	        printf("%dx^%d,  ", tmp->num,i);       // prints the data of current node
-		      tmp = tmp->nextptr;                    // advances the position of current node
+	        printf("%dx^%d,  ", tmp->current->num,i);       // prints the data of current node
+		      tmp = tmp->current->nextptr;                    // advances the position of current node
 	    	}
 	      else
 		    {
-		      printf("%d\n", tmp->num); 
+		      printf("%d\n", tmp->current->num); 
 	    	}
 	    }
     }
@@ -99,51 +99,51 @@ void displayList(int highest_exponent)
 //Returns: *poly ????
 //         pointer to the resultant polynomial
 
-double polyadd(polynomial *poly1, polynomial *poly2, polynomial *poly) 
+void polyadd(polynomial *poly1, polynomial *poly2, polynomial *poly) 
 { 
-  while(poly1->nextptr && poly2->nextptr) 
+  while(poly1->current->nextptr && poly2->current->nextptr) 
   {
     if(poly1->current->pow > poly2->current->pow) // If power of 1st polynomial is greater then 2nd, then store 1st as it is and move its pointer 
     { 
       poly->current->pow = poly1->current->pow; 
       poly->current->coeff = poly1->current->coeff; 
-      poly1->current = poly1->next; 
+      poly1->current = poly1->current->nextptr; 
     } 
-    else if(poly1->pow < poly2->pow) // If power of 2nd polynomial is greater then 1st, then store 2nd as it is and move its pointer
+    else if(poly1->current->pow < poly2->current->pow) // If power of 2nd polynomial is greater then 1st, then store 2nd as it is and move its pointer
     { 
       poly->current->pow = poly2->current->pow; 
       poly->current->coeff = poly2->current->coeff; 
-      poly2->current = poly2->next; 
+      poly2->current = poly2->current->nextptr; 
     } 
     else // If power of both polynomial numbers is same then add their coefficients 
     { 
       poly->current->pow = poly1->current->pow; 
       poly->current->coeff = poly1->current->coeff+poly2->current->coeff; 
-      poly1->current = poly1->next; 
-      poly2->current = poly2->next; 
+      poly1->current = poly1->current->nextptr; 
+      poly2->current = poly2->current->nextptr; 
     }  
     // Dynamically create new node 
-    poly->next = (polynomial *)malloc(sizeof(polynomial)); 
-    poly->current = poly->next; 
-    poly->next = NULL; 
+    poly->current->nextptr = (polynomial *)malloc(sizeof(polynomial)); 
+    poly->current = poly->current->nextptr; 
+    poly->current->nextptr = NULL; 
   } 
-  while(poly1->next || poly2->next) 
+  while(poly1->current->nextptr || poly2->current->nextptr) 
   { 
-    if(poly1->next) 
+    if(poly1->current->nextptr) 
     { 
       poly->current->pow = poly1->current->pow; 
       poly->current->coeff = poly1->current->coeff; 
-      poly1->current = poly1->next; 
+      poly1->current = poly1->current->nextptr; 
     } 
-    if(poly2->next) 
+    if(poly2->current->nextptr) 
     { 
       poly->current->pow = poly2->current->pow; 
       poly->current->coeff = poly2->current->coeff; 
-      poly2->current = poly2->next; 
+      poly2->current = poly2->current->nextptr; 
     } 
-    poly->next = (polynomial *)malloc(sizeof(polynomial)); 
-    poly->current = poly->next; 
-    poly->next = NULL; 
+    poly->current->nextptr = (polynomial *)malloc(sizeof(polynomial)); 
+    poly->current = poly->current->nextptr; 
+    poly->current->nextptr = NULL; 
   } 
 }
 
@@ -155,7 +155,7 @@ double polyadd(polynomial *poly1, polynomial *poly2, polynomial *poly)
 
 void polysubtract(polynomial *poly1, polynomial *poly2, polynomial *poly) 
 { 
-  while(poly1->nextptr && poly2->nextptr) 
+  while(poly1->current->nextptr && poly2->current->nextptr) 
   { 
     if(poly1->current->pow > poly2->current->pow) // If power of 1st polynomial is greater then 2nd, then store 1st as it is and move its pointer 
     { 
@@ -292,24 +292,22 @@ int returnOrder(polynomial *poly1)
   return poly1->current->pow;
 }
 
-double normalisePoly(polynomial *poly1, polynomial *poly5)
+void normalisePoly(polynomial *poly1, polynomial *poly5)
 { 
     // Create two pointer and store the address of the polynomial
-    int coeff;
-    polyNode *ptr1;
-    ptr1 = poly1;
+    int coeff, power;
     //poly->*head->coeff ??
-    poly->current->coeff=int a;
-    while (ptr1 != NULL) { 
+    int a = poly1->current->coeff;
+    while (poly1->current != NULL) { 
              
             // Divide the coefficients of the polynomials
-            coeff = ptr1->coeff / a;  
-  
+            coeff = (poly1->current->coeff) / a;  
+            power = poly1->current->pow;
             // Invoke addnode function to create a newnode by passing three parameters 
             poly5 = addnode(poly5, coeff, power); 
   
             // move the pointer of the polynomial to get its next term 
-            ptr1 = ptr1->next; 
+            poly1->current = poly1->current->nextptr; 
     }
     return poly5; 
 }     
@@ -332,14 +330,14 @@ void deletePoly(polynomial *poly1)
   poly1->current = poly1->head;
 
   //delete all nodes that are not the head or tail
-  while(poly1->head->successor != NULL){
-    next = poly1->head->successor;
-    poly1->head->successor = poly1->head->successor->successor;
+  while(poly1->current->nextptr != NULL){
+    next = poly1->current->nextptr;
+    poly1->current->nextptr = poly1->current->nextptr->nextptr;
     free(next);
   }
   //link list is now empty
   //now delete head
-  free(poly1->head);
+  free(poly1->current);
   //and delete the list itself
-  free(poly1)
+  free(poly1);
 }

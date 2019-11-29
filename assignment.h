@@ -12,11 +12,11 @@ void createNodeList(int max_coefficients);
 void displayList(int highest_exponent);
 
 //declarations of functions to manipulate polynomial
-double polyadd(polynomial *poly1, polynomial *poly2, polynomial *poly);
-double polysubtract(polynomial *poly1, polynomial *poly2, polynomial *poly);
-double multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
-double dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
-double normalisePoly(polynomial *poly1, polynomial *poly5);
+void polyadd(polynomial *poly1, polynomial *poly2, polynomial *poly);
+void polysubtract(polynomial *poly1, polynomial *poly2, polynomial *poly);
+void multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
+void dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
+void normalisePoly(polynomial *poly1, polynomial *poly5);
 
 void deletePoly(polynomial *poly1);
 int returnOrder(polynomial *poly1);
@@ -27,13 +27,13 @@ typedef struct n //n is a dummy variable so that we can use this new data type w
   double coeff; //coefficient of a term
   int pow; //power of x^n term
   struct n *nextptr; //pointer to the next node in the link list
-}stnode;
+}stNode;
 
 //Definition of polynomial type
 typedef struct
 {
-  polyNode *head; //pointer to the head of the link list
-  polyNode *current; //pointer to the current node
+  stNode *head; //pointer to the head of the link list
+  stNode *current; //pointer to the current node
 }polynomial;
 
 #endif
