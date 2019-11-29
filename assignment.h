@@ -27,8 +27,8 @@ typedef struct
 }polynomial;
 
 //declarations of functions to manipulate polynomial
-void polyadd(polynomial *poly1, polynomial *poly2, polynomial *poly);
-void polysubtract(polynomial *poly1, polynomial *poly2, polynomial *poly);
+void polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly);
+void polySubtract(polynomial *poly1, polynomial *poly2, polynomial *poly);
 void multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
 void dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
 void normalisePoly(polynomial *poly1, polynomial *poly5);

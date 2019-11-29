@@ -32,7 +32,7 @@ void createNodeList(int max_coefficients)
   struct node *fnNode, *tmp;
   int num, i;
   stNode = (struct node *)malloc(sizeof(struct node));
-  if(stnode == NULL) //check whether the fnnode is NULL and if so no memory allocation
+  if(stNode == NULL) //check whether the fnnode is NULL and if so no memory allocation
   {
     printf(" Memory can not be allocated.");
   }
@@ -40,9 +40,9 @@ void createNodeList(int max_coefficients)
   {
     printf("Input coefficient for highest value exponent: ");
     scanf("%d", &num);
-    num = stnode->current->num;      
-    stnode->current->nextptr = NULL; // links the address field to NULL
-    tmp = stnode;
+    num = stNode->current->num;      
+    stNode->current->nextptr = NULL; // links the address field to NULL
+    tmp = stNode;
     for(i=2; i<=max_coefficients; i++) // Creating n nodes and adding to linked list
     {
       fnNode = (struct node *)malloc(sizeof(struct node));
@@ -55,18 +55,21 @@ void createNodeList(int max_coefficients)
       {
         printf("Input coefficient for next value: ");
         scanf(" %d", &num);
-        fnNode->num = num;      // links the num field of fnNode with num
-        fnNode->current->nextptr = NULL; // links the address field of fnNode with NULL
-        tmp->current->nextptr = fnNode; // links previous node i.e. tmp to the fnNode
+        num = fnNode->current->num;       // links the num field of fnNode with num
+        fnNode->current->nextptr = NULL;  // links the address field of fnNode with NULL
+        tmp->current->nextptr = fnNode;   // links previous node i.e. tmp to the fnNode
         tmp = tmp->current->nextptr; 
       }
     }
   }
 }
 
+
+
+/*
 void displayList(int highest_exponent)
 {
-  struct node *tmp;
+  polynomial *tmp;
   if(stNode == NULL)
   {
     printf(" List is empty.");
@@ -80,18 +83,18 @@ void displayList(int highest_exponent)
 	    {
 	      if(i>0)
 	      {
-	        printf("%dx^%d,  ", tmp->current->num,i);       // prints the data of current node
+	        printf("%lf x^(%d), ", (tmp->current->coeff), i);       // prints the data of current node
 		      tmp = tmp->current->nextptr;                    // advances the position of current node
 	    	}
 	      else
 		    {
-		      printf("%d\n", tmp->current->num); 
+		      printf("%lf\n", (tmp->current->coeff)); 
 	    	}
 	    }
     }
   }
 }
-
+*/
 //double polyadd(polynomial *poly1, polynomial *poly2, polynomial *poly)
 //Adds coefficients of each x^n term
 //Parameters: *poly1 , *poly2
@@ -99,7 +102,7 @@ void displayList(int highest_exponent)
 //Returns: *poly ????
 //         pointer to the resultant polynomial
 
-void polyadd(polynomial *poly1, polynomial *poly2, polynomial *poly) 
+void polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly) 
 { 
   while(poly1->current->nextptr && poly2->current->nextptr) 
   {
@@ -153,7 +156,7 @@ void polyadd(polynomial *poly1, polynomial *poly2, polynomial *poly)
 //Parameters: 
 //Returns: 
 
-void polysubtract(polynomial *poly1, polynomial *poly2, polynomial *poly) 
+void polySubtract(polynomial *poly1, polynomial *poly2, polynomial *poly) 
 { 
   while(poly1->current->nextptr && poly2->current->nextptr) 
   { 
@@ -213,19 +216,18 @@ void multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly) // Fun
       int coeff, power; 
       coeff = poly1->current->coeff * poly2->current->coeff;    // Multiply the coefficient of both polynomials and store it in coeff 
       power = poly1->current->pow + poly2->current->pow;    // Add the powerer of both polynomials and store it in power 
-      poly->current = addnode(poly, coeff, power); // Invoke addnode function to create  a newnode by passing three parameters 
+      poly->current = addnode(poly, coeff, power); // Invoke  function to create  a newnode by passing three parameters 
       poly2->current = poly2->current->nextptr;                    // move the pointer of 2nd polynomial  two get its next term 
     }
     poly1->current = poly1->current->nextptr;  // move the pointer of 1st polynomial
   }   
   removeDuplicates(poly); // this function will be invoke to add the coefficient of the elements having same powerer from the resultant linked list 
-  return poly;    
 }
 
 
 
 //Divides two polynominals
-void dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly4)
+void dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly)
 {
   while (poly1 != NULL) 
   { 
@@ -234,13 +236,12 @@ void dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly4)
       int coeff, power; 
       coeff = poly1->current->coeff / poly2->current->coeff; // Divide the coefficient of both polynomials and store it in coeff 
       power = poly1->current->pow - poly2->current->pow; // Subtract the power of both polynomials and store it in power 
-      poly4->current = addnode(poly4, coeff, power); // Invoke addnode function to create a newnode by passing three parameters
+      poly->current = addnode(poly, coeff, power); // Invoke addnode function to create a newnode by passing three parameters
       poly2->current = poly2->current->nextptr; // move the pointer of 2nd polynomial two get its next term 
     }
     poly1->current = poly1->current->nextptr; // Move the pointer of 1st polynomial 
   }   
-  removeDuplicates(poly4); // this function will be invoke to add the coefficient of the elements having same power from the resultant linked list 
-  return poly4;   
+  removeDuplicates(poly); // this function will be invoke to add the coefficient of the elements having same power from the resultant linked list 
 }
 
 //Name:     void printPolynomial(struct Node *poly)
@@ -261,7 +262,7 @@ void printPolynomial(polynomial *poly) //printPolynomial function accepts the st
     else
     {
       printf("%lf x^(%d) ", poly->current->coeff, poly->current->pow);   //print the coeffieient and power with no sign
-                                                                            //this is because if the value is negative the value for the coeffieient will already contain a negative sign
+                                                                         //this is because if the value is negative the value for the coeffieient will already contain a negative sign
     } 
     poly->current = poly->current->nextptr;         //move the polynomial to the next value
   }
@@ -287,22 +288,20 @@ int returnOrder(polynomial *poly1)
 
 void normalisePoly(polynomial *poly1, polynomial *poly5)
 { 
-    // Create two pointer and store the address of the polynomial
-    int coeff, power;
-    //poly->*head->coeff ??
-    int a = poly1->current->coeff;
-    while (poly1->current != NULL) { 
-             
-            // Divide the coefficients of the polynomials
-            coeff = (poly1->current->coeff) / a;  
-            power = poly1->current->pow;
-            // Invoke addnode function to create a newnode by passing three parameters 
-            poly5 = addnode(poly5, coeff, power); 
-  
-            // move the pointer of the polynomial to get its next term 
-            poly1->current = poly1->current->nextptr; 
-    }
-    return poly5; 
+  // Create two pointer and store the address of the polynomial
+  int coeff, power;
+  //poly->*head->coeff ??
+  int a = poly1->current->coeff;
+  while (poly1->current != NULL) 
+  {          
+    // Divide the coefficients of the polynomials
+    coeff = (poly1->current->coeff) / a;  
+    power = poly1->current->pow;
+    // Invoke addnode function to create a newnode by passing three parameters 
+    poly5->current = addnode(poly5, coeff, power); 
+    // move the pointer of the polynomial to get its next term 
+    poly1->current = poly1->current->nextptr; 
+  }
 }     
 
 
@@ -324,7 +323,7 @@ void deletePoly(polynomial *poly1)
 
   //delete all nodes that are not the head or tail
   while(poly1->current->nextptr != NULL){
-    next = poly1->current->nextptr;
+    next->current = poly1->current->nextptr;
     poly1->current->nextptr = poly1->current->nextptr->nextptr;
     free(next);
   }
