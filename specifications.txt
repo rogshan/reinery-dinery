@@ -38,9 +38,7 @@ Steps:
 7) If the next node is the tail, delete the head
 8) Delete the polynomial itself
 
-////////////////////////////////
-///////// WHOEVER MADE THIS PLEASE GO THROUGH AND FIX IT///////////////
-//////// I DON'T UNDERSTAND HOW IT WORKS /////////////////////////////
+
 - addPoly()
 - adds 2 polynomials together by adding their coefficients
 
@@ -48,11 +46,11 @@ Steps:
 - Output: void
 
 Steps:
-1) Check to see which polynomial has the higher order
-2) Store the higher order equation as is in poly
-3) Move the pointer of the higher order equation to the next node
-4) If both polynomials have the same order add the coefficients together
-5) 
+1) If power of 1st polynomial is greater then 2nd, then store 1st as it is and move its pointer 
+2) If power of 2nd polynomial is greater then 1st, then store 2nd as it is and move its pointer 
+3) If power of both polynomial numbers is same then add their coefficients 
+4) Dynamically create new node 
+5) Display Linked list 
 
 ////////////////////////////////
 - subtractPoly()
@@ -60,6 +58,12 @@ Steps:
 - Parameters: 2 polynomials with coefficients of type double
 - Output: the result of subtracting one polynomial from the other as a poly
 
+Steps:
+1) If power of 1st polynomial is greater then 2nd, then store 1st as it is and move its pointer 
+2) If power of 2nd polynomial is greater then 1st, then store 2nd as it is and move its pointer 
+3) If power of both polynomial numbers is same then subtract their coefficients 
+4) Dynamically create new node 
+5) Display Linked list 
 ////////////////////////////////
 - multiplyPoly()
 - Multiplies a polyinomial by a double
@@ -67,6 +71,14 @@ Steps:
 - Parameters: - a polynomial with coefficients of type double
   	  - a double value to multiply by
 - Returns: the result of multiplying the polynomial by the double
+
+Steps:
+ 1) Multiply the coefficient of both polynomials and store it in coeff 
+ 2) Add the power of both polynomials and store it in power 
+ 3) Invoke  function to create  a new node by passing three parameters 
+ 4) Move the pointer of 2nd polynomial  two get its next term 
+ 5) Move the pointer of 1st polynomial
+ 6) The removeDuplicates  function will be invoked to add the coefficient of the elements having same power from the resultant linked list 
 
 ////////////////////////////////
 - dividePoly()
@@ -76,6 +88,13 @@ Steps:
   	  - a double value to divide by
 - Returns: the result of dividing the polynomial by the double
 
+Steps:
+1) Divide the coefficient of both polynomials and store it in coeff 
+2) Subtract the power of both polynomials and store it in power 
+3) Invoke addnode function to create a newnode by passing three parameters
+4) Move the pointer of 2nd polynomial two get its next term 
+5) Move the pointer of 1st polynomial 
+6) The removeDuplicatesfunction will be invoke to add the coefficients of the elements having same power from the resultant linked list 
 ///////////////////////////////
 - normalisePoly()
 - Divides each term by coefficient of the highest order term
