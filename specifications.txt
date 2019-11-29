@@ -95,11 +95,6 @@ Steps:
 4) Move the pointer of 2nd polynomial two get its next term 
 5) Move the pointer of 1st polynomial 
 6) The removeDuplicatesfunction will be invoke to add the coefficients of the elements having same power from the resultant linked list 
-///////////////////////////////
-- normalisePoly()
-- Divides each term by coefficient of the highest order term
-- Parameters: a polynomial of order n with coefficients of type double
-- Returns: polynomial with coefficient of the highest order term = 1
 
 //////////////////////////////
 - returnOrder()
@@ -112,6 +107,24 @@ Steps:
 1) Start at the head node
 2) Go to the next node - this will have the highest power of x
 3) Return the highest power of x
+
+
+////////////////////////////////
+- normalisePoly()
+- Function to divide all coefficients of a polynomial by the coefficient for the highest exponent (so coefficient for highest exponent is 1)
+
+- Parameters:*poly1 ( a polynomial of order n with coefficients of type double)
+- Returns:*poly5 (polynomial with coefficient of the highest order term = 1)
+
+Steps:
+1) Create int coeff and power.
+2) Declare int a equal to the current (head) coefficient of the 'polynomial' linked list
+3) While the current node is not equal to NULL, int coeff is equal to the current node's coefficient divided by int a
+4) pow does not change for that node
+5) New linked list polynomial poly5 is added with new coefficients
+6) Pointer is moved to the next term in polynomial poly1
+
+
 
 /////////////////////////////
 - printPoly()
