@@ -256,14 +256,7 @@ void printPolynomial(polynomial *poly) //printPolynomial function accepts the st
   {
     if((poly->current->coeff)>0)        //if the coefficient is greater than zero
     {
-      if(poly->current->nextptr = NULL)
-      {
-        printf("%lf x^(%d) ", poly->current->coeff, poly->current->pow);
-      }
-      else
-      {
-        printf("%lf x^(%d) + ", poly->current->coeff, poly->current->pow); //print the coeffieient and power followed by a positive sign
-      }
+        printf("+ %lf x^(%d) ", poly->current->coeff, poly->current->pow); //print the coeffieient and power preceeded by a positive sign
     }
     else
     {
