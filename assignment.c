@@ -136,7 +136,7 @@ polynomial *createPoly()
 // addnode()
 // adds a node/term to the polynomial after the current node
 //
-// Parameters: stnode - data to be contained in the new node
+// Parameters: stNode - data to be contained in the new node
 //             poly1  - polynomial in which to add new node
 // Returns: Success: ok
 //          Failure: noMemory
