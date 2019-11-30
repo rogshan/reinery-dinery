@@ -97,7 +97,10 @@ void displayList(int highest_exponent)
 */
 
 //////////////////////////////////
-//createPoly()
+// createPoly()
+// creates a link list that represents a polynomial
+//
+//
 //
 //////////////////////////////////
 
