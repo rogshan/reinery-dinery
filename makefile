@@ -12,7 +12,7 @@ polynomial: assignment.o assignmentMain.o
 		gcc -o $@ $^
 
 assignment.o: assignment.c assignment.h
-	gcc -Wall -ggbd -o $@ -c $<
+	gcc -Wall -ggdb -o $@ -c $<
 
 assignmentMain.o: assignmentMain.c assignment.h
 	gcc -Wall -ggdb -o $@ -c $<
