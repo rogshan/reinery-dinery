@@ -22,10 +22,36 @@ polynomial data type
 
 ////////////////////////////////
 - createPoly()
-- Creates a polynomial
+- Creates an empty polynomial
 
-- Parameters: the coefficients of each term in the polynomial -AN ARRAY MAYBE?
-- Output: a polynomial of type polynomial
+- Parameters: none
+- Output: Success: a pointer to the polynomial
+          Failure: NULL
+
+Steps:
+1) Allocate memory for the polynomial
+2) Check if memory was successfully allocated
+3) If successful, try to allocate memory for the head
+4) If successful, point head to tail and make head the current node
+5) If failed, de-allocate the memory for the polynomial
+6) Set the polynomial to NULL
+
+/////////////////////////////////
+- addNode()
+- adds a node/term to the polynomial after the current node
+//
+// Parameters: stnode - data to be contained in the new node
+//             poly1  - polynomial in which to add new node
+// Returns: Success: ok
+//          Failure: noMemory
+
+Steps:
+1) Allocate memory for a new node
+2) If allocations fails, return noMemory
+3) If allocation successful, add data to the new node
+4) Change the successor to the current node to the successor of the new node
+5) Set the successor of the current node to the new node
+6) return ok
 
 ////////////////////////////////
 - deletePoly()
