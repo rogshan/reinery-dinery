@@ -96,13 +96,74 @@ void displayList(int highest_exponent)
 }
 */
 
-//////////////////////////////////
+/////////////////////////////////////
 // createPoly()
-// creates a link list that represents a polynomial
+// creates an empty link list 
+// head points to tail (NULL)
 //
+// Parameters: none
+// Returns: pointer to list if successful
+//          NULL if failed
+/////////////////////////////////////
+
+polynomial *createPoly()
+{
+  polynomial *poly1;
+  poly1 = (polynomial *) malloc(sizeof(poly1)); //allocate memory for poly1
+  //check if memory allocated successfully
+  if (poly1 != NULL){
+    //SUCCESS
+    //try to allocate memory for the head
+    list->head = (stnode *) malloc(sizeof(stnode));
+    //check if memory allocated successfully
+    if (list->head != NULL){
+      //SUCCESS
+      //point head to tail
+      poly1->head->nextptr = NULL;
+      //make head the current node
+      poly1->current = poly1->head;
+    }else{
+      //memory allocation to head failed
+      //de-allocate poly1 and set to NULL
+      free(poly1);
+      poly1 = NULL;
+    }
+  }
+  return poly1; //Failure will return NULL, Success returns a pointer
+}
+
+/////////////////////////////////////
+// addnode()
+// adds a node/term to the polynomial after the current node
 //
-//
-//////////////////////////////////
+// Parameters: stnode - data to be contained in the new node
+//             poly1  - polynomial in which to add new node
+// Returns: Success: ok
+//          Failure: noMemory
+/////////////////////////////////////
+
+llError addnode(stnode *node, polynomial *poly1)
+{
+  llError returnVal = ok;
+  stnode *newNode;
+  
+  // allocate memory for new node
+  newNode = (stnode *) malloc(sizeof(stnode));
+  if (newNode == NULL){
+    //allocation failed
+    returnVal = noMemory;
+  }else {
+    //allocation successful
+    //associate data with newNode
+    newNode->node = *node;
+    //place newNode into link list
+    //set successor of current node to successor of newNode
+    newNode->nextptr = poly1->current->nextptr;
+    //set successor of current node to newNode
+    poly1->current->nextptr = newNode;
+  }
+  return returnVal;
+}
 
 /////////////////////////////////////
 // deletePoly()
@@ -111,6 +172,7 @@ void displayList(int highest_exponent)
 // parameter:head -  head of a valid list
 // return: void
 ////////////////////////////////////
+
 void deletePoly(polynomial *poly1)
 {
   polynomial *next;
@@ -120,14 +182,14 @@ void deletePoly(polynomial *poly1)
   poly1->current = poly1->head;
 
   //delete all nodes that are not the head or tail
-  while(poly1->current->nextptr != NULL){
-    next->current = poly1->current->nextptr;
-    poly1->current->nextptr = poly1->current->nextptr->nextptr;
+  while(poly1->head->nextptr != NULL){
+    next = poly1->head->nextptr;
+    poly1->head->nextptr = poly1->head->nextptr->nextptr;
     free(next);
   }
   //link list is now empty
   //now delete head
-  free(poly1->current);
+  free(poly1->head);
   //and delete the list itself
   free(poly1);
 }
