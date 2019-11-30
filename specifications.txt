@@ -1,18 +1,24 @@
 specifications.txt
 a text file which contains the specifications for each operation
-Author: Ciara Sookarry
-Date: 29/11/19
+Author: Ciara Sookarry, Aoife O'Doherty, Anna Shaughnessy
+Date: 30/11/19
+
 
 ////////////////////////////////
-- functionName()
-- Description of the function
+stnode data type
+- Represents one term of a polynomial as a node in a link list
+- Uses a dummy variable n so that an element can also be of type stnode
 
-- Parameters:
-- Returns:
+- Elements: double coeff - the coefficient of the term represented by the node
+            int pow      - the power of the x in the term
+	    *nextptr     - a pointer to the next node/term of the polynomial
 
-Steps:
- - A numbered step by step pseudocode walkthrough of how functions works
-    
+////////////////////////////////
+polynomial data type
+- Represents a polynomial as a link list where each node is a term
+
+- Elements: *head    - a pointer to the head node
+            *current - a pointer to the current node
 
 ////////////////////////////////
 - createPoly()
@@ -38,7 +44,7 @@ Steps:
 7) If the next node is the tail, delete the head
 8) Delete the polynomial itself
 
-
+////////////////////////////////
 - addPoly()
 - adds 2 polynomials together by adding their coefficients
 
@@ -55,6 +61,7 @@ Steps:
 ////////////////////////////////
 - subtractPoly()
 - subtracts one polynomial from another by subtracting coefficients
+
 - Parameters: 2 polynomials with coefficients of type double
 - Output: the result of subtracting one polynomial from the other as a poly
 
@@ -63,11 +70,13 @@ Steps:
 2) If power of 2nd polynomial is greater then 1st, then store 2nd as it is and move its pointer 
 3) If power of both polynomial numbers is same then subtract their coefficients 
 4) Dynamically create new node 
-5) Display Linked list 
+5) Display Linked list
+
 ////////////////////////////////
 - multiplyPoly()
 - Multiplies a polyinomial by a double
 - Multiplies the coefficient of each term by the double
+
 - Parameters: - a polynomial with coefficients of type double
   	  - a double value to multiply by
 - Returns: the result of multiplying the polynomial by the double
@@ -76,7 +85,7 @@ Steps:
  1) Multiply the coefficient of both polynomials and store it in coeff 
  2) Add the power of both polynomials and store it in power 
  3) Invoke  function to create  a new node by passing three parameters 
- 4) Move the pointer of 2nd polynomial  two get its next term 
+ 4) Move the pointer of 2nd polynomial to get its next term 
  5) Move the pointer of 1st polynomial
  6) The removeDuplicates  function will be invoked to add the coefficient of the elements having same power from the resultant linked list 
 
@@ -84,6 +93,7 @@ Steps:
 - dividePoly()
 - Divides a polyinomial by a double
 - Divides the coefficient of each term by the double
+
 - Parameters: - a polynomial with coefficients of type double
   	  - a double value to divide by
 - Returns: the result of dividing the polynomial by the double
@@ -92,22 +102,9 @@ Steps:
 1) Divide the coefficient of both polynomials and store it in coeff 
 2) Subtract the power of both polynomials and store it in power 
 3) Invoke addnode function to create a newnode by passing three parameters
-4) Move the pointer of 2nd polynomial two get its next term 
+4) Move the pointer of 2nd polynomial to get its next term 
 5) Move the pointer of 1st polynomial 
 6) The removeDuplicatesfunction will be invoke to add the coefficients of the elements having same power from the resultant linked list 
-
-//////////////////////////////
-- returnOrder()
-- returns the highest power of x in the polynomial
-
-- Parameters: *poly1 - pointer to a valid polynomial 
-- Returns: the highest power of x in the polynomial
-
-Steps:
-1) Start at the head node
-2) Go to the next node - this will have the highest power of x
-3) Return the highest power of x
-
 
 ////////////////////////////////
 - normalisePoly()
@@ -124,7 +121,17 @@ Steps:
 5) New linked list polynomial poly5 is added with new coefficients
 6) Pointer is moved to the next term in polynomial poly1
 
+//////////////////////////////
+- returnOrder()
+- returns the highest power of x in the polynomial
 
+- Parameters: *poly1 - pointer to a valid polynomial 
+- Returns: the highest power of x in the polynomial
+
+Steps:
+1) Start at the head node
+2) Go to the next node - this will have the highest power of x
+3) Return the highest power of x
 
 /////////////////////////////
 - printPoly()
