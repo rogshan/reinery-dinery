@@ -29,7 +29,7 @@ typedef enum {ok, illegalNode, noMemory}llError;
 //void createNodeList(int max_coefficients);
 //void displayList(int highest_exponent);
 polynomial *createPoly();
-llError addnode(stnode *node, polynomial poly1);
+llError addnode(stNode *node, polynomial poly1);
 void deletePoly(polynomial *poly1);
 void printPolynomial(polynomial *poly);
 
