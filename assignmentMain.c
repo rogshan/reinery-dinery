@@ -11,10 +11,10 @@
 
 int main()
 {
-  int highest_exponent = 0;
-  int max_coefficients = highest_exponent+1;
-  createNodeList(max_coefficients);
-  displayList(highest_exponent);
+  //int highest_exponent = 0;
+  //int max_coefficients = highest_exponent+1;
+  //createNodeList(max_coefficients);
+  //displayList(highest_exponent);
   return 0;
 }
 
