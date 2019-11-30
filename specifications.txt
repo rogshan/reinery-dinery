@@ -20,6 +20,14 @@ polynomial data type
 - Elements: *head    - a pointer to the head node
             *current - a pointer to the current node
 
+/////////////////////////////////
+enum llError
+- Provides feedback on the outcome of certain operations
+
+- Returns: ok          - all is good
+           noMemory    - memory allocation failed
+	   illegalNode - the operation cannot be performed on this node
+
 ////////////////////////////////
 - createPoly()
 - Creates an empty polynomial
