@@ -142,13 +142,13 @@ polynomial *createPoly()
 //          Failure: noMemory
 /////////////////////////////////////
 
-llError addnode(stnode *node, polynomial *poly1)
+llError addnode(stNode *node, polynomial *poly1)
 {
   llError returnVal = ok;
-  stnode *newNode;
+  stNode *newNode;
   
   // allocate memory for new node
-  newNode = (stnode *) malloc(sizeof(stnode));
+  newNode = (stNode *) malloc(sizeof(stNode));
   if (newNode == NULL){
     //allocation failed
     returnVal = noMemory;
