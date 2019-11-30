@@ -27,7 +27,7 @@ void readPolynomial(struct polynomial poly[10])
 }
 */
 
-void createNodeList(int max_coefficients)
+ /*void createNodeList(int max_coefficients)
 {
   struct node *fnNode, *tmp;
   int num, i;
@@ -64,7 +64,7 @@ void createNodeList(int max_coefficients)
   }
 }
 
-
+ */
 
 /*
 void displayList(int highest_exponent)
@@ -95,12 +95,47 @@ void displayList(int highest_exponent)
   }
 }
 */
+
+//////////////////////////////////
+//createPoly()
+//
+//////////////////////////////////
+
+/////////////////////////////////////
+// deletePoly()
+// deletes the entire polynomial with the head-node named head
+//
+// parameter:head -  head of a valid list
+// return: void
+////////////////////////////////////
+void deletePoly(polynomial *poly1)
+{
+  polynomial *next;
+
+  //delete all nodes until list is empty
+  //starting at the head
+  poly1->current = poly1->head;
+
+  //delete all nodes that are not the head or tail
+  while(poly1->current->nextptr != NULL){
+    next->current = poly1->current->nextptr;
+    poly1->current->nextptr = poly1->current->nextptr->nextptr;
+    free(next);
+  }
+  //link list is now empty
+  //now delete head
+  free(poly1->current);
+  //and delete the list itself
+  free(poly1);
+}
+/////////////////////////////
 //double polyadd(polynomial *poly1, polynomial *poly2, polynomial *poly)
 //Adds coefficients of each x^n term
 //Parameters: *poly1 , *poly2
 //         pointers to valid polynomials
 //Returns: *poly ????
 //         pointer to the resultant polynomial
+////////////////////////////
 
 void polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly) 
 { 
@@ -150,11 +185,12 @@ void polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly)
   } 
 }
 
-
+////////////////////////////////
 //double polysubtract(polynomial *poly1, polynomial *poly2, polynomial *poly)
 //Subtracts onr polynomial from another
 //Parameters: 
-//Returns: 
+//Returns:
+///////////////////////////////
 
 void polySubtract(polynomial *poly1, polynomial *poly2, polynomial *poly) 
 { 
@@ -204,9 +240,12 @@ void polySubtract(polynomial *poly1, polynomial *poly2, polynomial *poly)
   } 
 }
 
+////////////////////////////////////////
 //Multiplies each coefficient by a double and returns each
 //Parameters: polynomial type, double constant
 //Returns: polynomial with each coefficient multiplied by a double
+////////////////////////////////////////
+
 void multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly) // Function two Multiply two polynomial Numbers Node* multiply(Node* poly1, Node* poly2, Node* poly3) 
 {
   while (poly1 != NULL) 
@@ -225,8 +264,9 @@ void multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly) // Fun
 }
 
 
-
+///////////////////////////////////
 //Divides two polynominals
+///////////////////////////////////
 void dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly)
 {
   while (poly1 != NULL) 
@@ -244,27 +284,21 @@ void dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly)
   removeDuplicates(poly); // this function will be invoke to add the coefficient of the elements having same power from the resultant linked list 
 }
 
-//Name:     void printPolynomial(struct Node *poly)
-//Purpose:  Prints the polynoomial given to stdout
-//          Uses a while loop so that it will run through all the values of the polynomial
-//          until it reaches the end (ie NULL)
-//Parameters:   struct Node *polynomial
-//Returns:   prints the polynomial to stdout
-void printPolynomial(polynomial *poly) //printPolynomial function accepts the structure of polynomial
-{
-  poly->current = poly->head;           //sets the current polynomial to the head
-  while(poly->current != NULL)          //while current state is not NULL
-  {
-    if((poly->current->coeff)>0)        //if the coefficient is greater than zero
-    {
-        printf("+ %lf x^(%d) ", poly->current->coeff, poly->current->pow); //print the coeffieient and power preceeded by a positive sign
-    }
-    else
-    {
-      printf("%lf x^(%d) ", poly->current->coeff, poly->current->pow);   //print the coeffieient and power with no sign
-                                                                         //this is because if the value is negative the value for the coeffieient will already contain a negative sign
-    } 
-    poly->current = poly->current->nextptr;         //move the polynomial to the next value
+void normalisePoly(polynomial *poly1, polynomial *poly5)
+{ 
+  // Create two pointer and store the address of the polynomial
+  int coeff, power;
+  //poly->*head->coeff ??
+  int a = poly1->current->coeff;
+  while (poly1->current != NULL) 
+  {          
+    // Divide the coefficients of the polynomials
+    coeff = (poly1->current->coeff) / a;  
+    power = poly1->current->pow;
+    // Invoke addnode function to create a newnode by passing three parameters 
+    poly5->current = addnode(poly5, coeff, power); 
+    // move the pointer of the polynomial to get its next term 
+    poly1->current = poly1->current->nextptr; 
   }
 }
 
@@ -286,50 +320,30 @@ int returnOrder(polynomial *poly1)
   return poly1->current->pow;
 }
 
-void normalisePoly(polynomial *poly1, polynomial *poly5)
-{ 
-  // Create two pointer and store the address of the polynomial
-  int coeff, power;
-  //poly->*head->coeff ??
-  int a = poly1->current->coeff;
-  while (poly1->current != NULL) 
-  {          
-    // Divide the coefficients of the polynomials
-    coeff = (poly1->current->coeff) / a;  
-    power = poly1->current->pow;
-    // Invoke addnode function to create a newnode by passing three parameters 
-    poly5->current = addnode(poly5, coeff, power); 
-    // move the pointer of the polynomial to get its next term 
-    poly1->current = poly1->current->nextptr; 
-  }
-}     
+////////////////////////////////////////
+//Name:     void printPolynomial(struct Node *poly)
+//Purpose:  Prints the polynoomial given to stdout
+//          Uses a while loop so that it will run through all the values of the polynomial
+//          until it reaches the end (ie NULL)
+//Parameters:   struct Node *polynomial
+//Returns:   prints the polynomial to stdout
+///////////////////////////////////////
 
-
-
-/////////////////////////////////////
-// deletePoly()
-// deletes the entire polynomial with the head-node named head
-//
-// parameter:head -  head of a valid list
-// return: void
-////////////////////////////////////
-void deletePoly(polynomial *poly1)
+void printPolynomial(polynomial *poly) //printPolynomial function accepts the structure of polynomial
 {
-  polynomial *next;
-
-  //delete all nodes until list is empty
-  //starting at the head
-  poly1->current = poly1->head;
-
-  //delete all nodes that are not the head or tail
-  while(poly1->current->nextptr != NULL){
-    next->current = poly1->current->nextptr;
-    poly1->current->nextptr = poly1->current->nextptr->nextptr;
-    free(next);
+  poly->current = poly->head;           //sets the current polynomial to the head
+  while(poly->current != NULL)          //while current state is not NULL
+  {
+    if((poly->current->coeff)>0)        //if the coefficient is greater than zero
+    {
+        printf("+ %lf x^(%d) ", poly->current->coeff, poly->current->pow); //print the coeffieient and power preceeded by a positive sign
+    }
+    else
+    {
+      printf("%lf x^(%d) ", poly->current->coeff, poly->current->pow);   //print the coeffieient and power with no sign
+                                                                         //this is because if the value is negative the value for the coeffieient will already contain a negative sign
+    } 
+    poly->current = poly->current->nextptr;         //move the polynomial to the next value
   }
-  //link list is now empty
-  //now delete head
-  free(poly1->current);
-  //and delete the list itself
-  free(poly1);
 }
+
