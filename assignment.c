@@ -114,7 +114,7 @@ polynomial *createPoly()
   if (poly1 != NULL){
     //SUCCESS
     //try to allocate memory for the head
-    poly1->head = (stnode *) malloc(sizeof(stnode));
+    poly1->head = (stNode *) malloc(sizeof(stnode));
     //check if memory allocated successfully
     if (poly1->head != NULL){
       //SUCCESS
