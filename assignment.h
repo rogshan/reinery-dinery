@@ -7,9 +7,21 @@
 #ifndef ASSIGNMENT_H
 #define ASSIGNMENT_H
 
-//declarations of functions to create link list
-void createNodeList(int max_coefficients);
-void displayList(int highest_exponent);
+//declarations of functions to create and edit link list itself
+//void createNodeList(int max_coefficients);
+//void displayList(int highest_exponent);
+//createPoly()
+void deletePoly(polynomial *poly1);
+void printPolynomial(polynomial *poly);
+
+//declarations of functions to manipulate polynomial
+void polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly);
+void polySubtract(polynomial *poly1, polynomial *poly2, polynomial *poly);
+void multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
+void dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
+void normalisePoly(polynomial *poly1, polynomial *poly5);
+int returnOrder(polynomial *poly1);
+
 
 //Definition of a link list node
 typedef struct n //n is a dummy variable so that we can use this new data type within the struct itself
@@ -26,14 +38,7 @@ typedef struct
   stNode *current; //pointer to the current node
 }polynomial;
 
-//declarations of functions to manipulate polynomial
-void polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly);
-void polySubtract(polynomial *poly1, polynomial *poly2, polynomial *poly);
-void multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
-void dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
-void normalisePoly(polynomial *poly1, polynomial *poly5);
-
-void deletePoly(polynomial *poly1);
-int returnOrder(polynomial *poly1);
+// Link list error messages
+typedef enum {ok, illegalNode, noMemory}llError;
 
 #endif
