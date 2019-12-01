@@ -1,6 +1,6 @@
 //assignment.c
 //Contains operations for use on polynomials
-//date: 28/11/2019
+//date: 1/12/2019
 //author: Roger Shanahan, Ciara Sookarry, Anna Shaughnessy, Aoife O'Doherty
 
 #include <stdlib.h>
@@ -155,7 +155,7 @@ llError addnode(stNode *node, polynomial *poly1)
   }else {
     //allocation successful
     //associate data with newNode
-    newNode->node = *node;
+    *newNode = *node;
     //place newNode into link list
     //set successor of current node to successor of newNode
     newNode->nextptr = poly1->current->nextptr;
@@ -317,15 +317,15 @@ void multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly) // Fun
   { 
     while (poly2 != NULL) 
     { 
-      int coeff, power; 
-      coeff = poly1->current->coeff * poly2->current->coeff;    // Multiply the coefficient of both polynomials and store it in coeff 
-      power = poly1->current->pow + poly2->current->pow;    // Add the powerer of both polynomials and store it in power 
-      poly->current = addnode(poly, coeff, power); // Invoke  function to create  a newnode by passing three parameters 
+      stNode *temp;               //creates a temporary node that contains a coefficient and a power
+      temp->coeff = poly1->current->coeff * poly2->current->coeff;    // Multiply the coefficient of both polynomials and store it in coeff 
+      temp->pow = poly1->current->pow + poly2->current->pow;    // Add the powerer of both polynomials and store it in power 
+      poly->current = addnode(temp, poly); // Invoke  function to create  a newnode by passing three parameters 
       poly2->current = poly2->current->nextptr;                    // move the pointer of 2nd polynomial  two get its next term 
     }
     poly1->current = poly1->current->nextptr;  // move the pointer of 1st polynomial
   }   
-  removeDuplicates(poly); // this function will be invoke to add the coefficient of the elements having same powerer from the resultant linked list 
+  //removeDuplicates(poly); // this function will be invoke to add the coefficient of the elements having same power from the resultant linked list 
 }
 
 
@@ -338,30 +338,29 @@ void dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly)
   { 
     while (poly2 != NULL) 
     { 
-      int coeff, power; 
-      coeff = poly1->current->coeff / poly2->current->coeff; // Divide the coefficient of both polynomials and store it in coeff 
-      power = poly1->current->pow - poly2->current->pow; // Subtract the power of both polynomials and store it in power 
-      poly->current = addnode(poly, coeff, power); // Invoke addnode function to create a newnode by passing three parameters
+      stNode *temp;     //creates a temporary node that contains a coefficient and a power
+      temp->coeff = poly1->current->coeff / poly2->current->coeff; // Divide the coefficient of both polynomials and store it in coeff 
+      temp->pow = poly1->current->pow - poly2->current->pow; // Subtract the power of both polynomials and store it in power 
+      poly->current = addnode(temp, poly); // Invoke addnode function to create a newnode by passing twp parameters
       poly2->current = poly2->current->nextptr; // move the pointer of 2nd polynomial two get its next term 
     }
     poly1->current = poly1->current->nextptr; // Move the pointer of 1st polynomial 
   }   
-  removeDuplicates(poly); // this function will be invoke to add the coefficient of the elements having same power from the resultant linked list 
+  //removeDuplicates(poly); // this function will be invoke to add the coefficient of the elements having same power from the resultant linked list 
 }
 
 void normalisePoly(polynomial *poly1, polynomial *poly5)
 { 
-  // Create two pointer and store the address of the polynomial
-  int coeff, power;
   //poly->*head->coeff ??
   int a = poly1->current->coeff;
+  stNode *temp;                   //creates a temporary node that contains a coefficient and a power
   while (poly1->current != NULL) 
   {          
     // Divide the coefficients of the polynomials
-    coeff = (poly1->current->coeff) / a;  
-    power = poly1->current->pow;
-    // Invoke addnode function to create a newnode by passing three parameters 
-    poly5->current = addnode(poly5, coeff, power); 
+    temp->coeff = (poly1->current->coeff) / a;  
+    temp->pow = poly1->current->pow;
+    // Invoke addnode function to create a newnode by passing two parameters 
+    poly5->current = addnode(temp, poly5); 
     // move the pointer of the polynomial to get its next term 
     poly1->current = poly1->current->nextptr; 
   }
