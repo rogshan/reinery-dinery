@@ -203,8 +203,9 @@ void deletePoly(polynomial *poly1)
 ////////////////////////////
 
 void polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly) 
-{ 
-  while(poly1->current->nextptr && poly2->current->nextptr) 
+{
+  //RESET TO HEAD
+  while(poly1->current->nextptr && poly2->current->nextptr) // check haven't reached tail - INCORRECT CODE 
   {
     if(poly1->current->pow > poly2->current->pow) // If power of 1st polynomial is greater then 2nd, then store 1st as it is and move its pointer 
     { 
@@ -225,25 +226,27 @@ void polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly)
       poly1->current = poly1->current->nextptr; 
       poly2->current = poly2->current->nextptr; 
     }  
-    // Dynamically create new node 
+    // Dynamically create new node
+    //MAYBE USE ADDNODE()
     poly->current->nextptr = (polynomial *)malloc(sizeof(polynomial)); 
     poly->current = poly->current->nextptr; 
     poly->current->nextptr = NULL; 
   } 
-  while(poly1->current->nextptr || poly2->current->nextptr) 
+  while(poly1->current->nextptr || poly2->current->nextptr) // if one polynomial reaches tail before the other
   { 
-    if(poly1->current->nextptr) 
+    if(poly1->current->nextptr) //if poly1->current->nextptr is not tail
     { 
       poly->current->pow = poly1->current->pow; 
       poly->current->coeff = poly1->current->coeff; 
       poly1->current = poly1->current->nextptr; 
     } 
-    if(poly2->current->nextptr) 
+    if(poly2->current->nextptr) //if poly2->current->nextptr is not tail
     { 
       poly->current->pow = poly2->current->pow; 
       poly->current->coeff = poly2->current->coeff; 
       poly2->current = poly2->current->nextptr; 
-    } 
+    }
+    //
     poly->current->nextptr = (polynomial *)malloc(sizeof(polynomial)); 
     poly->current = poly->current->nextptr; 
     poly->current->nextptr = NULL; 
