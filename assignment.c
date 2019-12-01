@@ -204,8 +204,11 @@ void deletePoly(polynomial *poly1)
 
 void polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly) 
 {
-  //RESET TO HEAD
-  while(poly1->current->nextptr && poly2->current->nextptr) // check haven't reached tail - INCORRECT CODE 
+  //Set current nodes to the head
+  poly1->current = poly1->head;
+  poly2->current = poly2->head;
+  
+  while(poly1->current->nextptr != NULL && poly2->current->nextptr != NULL) // check that tail isn't reached 
   {
     if(poly1->current->pow > poly2->current->pow) // If power of 1st polynomial is greater then 2nd, then store 1st as it is and move its pointer 
     { 
@@ -227,20 +230,21 @@ void polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly)
       poly2->current = poly2->current->nextptr; 
     }  
     // Dynamically create new node
-    //MAYBE USE ADDNODE()
-    poly->current->nextptr = (polynomial *)malloc(sizeof(polynomial)); 
+    //stNode newNode; 
+    //addnode(newNode, poly);
+     poly->current->nextptr = (polynomial *)malloc(sizeof(polynomial)); 
     poly->current = poly->current->nextptr; 
     poly->current->nextptr = NULL; 
   } 
-  while(poly1->current->nextptr || poly2->current->nextptr) // if one polynomial reaches tail before the other
+  while(poly1->current->nextptr == NULL || poly2->current->nextptr == NULL ) // if one polynomial reaches tail before the other
   { 
-    if(poly1->current->nextptr) //if poly1->current->nextptr is not tail
+    if(poly1->current->nextptr != NULL) //if poly1->current->nextptr is not tail
     { 
       poly->current->pow = poly1->current->pow; 
       poly->current->coeff = poly1->current->coeff; 
       poly1->current = poly1->current->nextptr; 
     } 
-    if(poly2->current->nextptr) //if poly2->current->nextptr is not tail
+    if(poly2->current->nextptr != NULL) //if poly2->current->nextptr is not tail
     { 
       poly->current->pow = poly2->current->pow; 
       poly->current->coeff = poly2->current->coeff; 
