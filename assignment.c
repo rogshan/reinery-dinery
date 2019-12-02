@@ -340,7 +340,7 @@ polynomial multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly) 
     poly1->current = poly1->current->nextptr;  // move the pointer of 1st polynomial
   }   
   //removeDuplicates(poly); // this function will be invoke to add the coefficient of the elements having same power from the resultant linked list
-  return poly;
+  return *poly;
 }
 
 
@@ -362,7 +362,7 @@ polynomial dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly)
     poly1->current = poly1->current->nextptr; // Move the pointer of 1st polynomial 
   }   
   //removeDuplicates(poly); // this function will be invoke to add the coefficient of the elements having same power from the resultant linked list
-  return poly;
+  return *poly;
 }
 
 
@@ -388,7 +388,7 @@ polynomial normalisePoly(polynomial *poly1, polynomial *poly5)
     // move the pointer of the polynomial to get its next term 
     poly1->current = poly1->current->nextptr; 
   }
-  return poly5;
+  return *poly5;
 }
 
 // int returnOrder()
