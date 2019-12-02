@@ -34,11 +34,11 @@ void deletePoly(polynomial *poly1);
 void printPolynomial(polynomial *poly);
 
 //declarations of functions to manipulate polynomial
-void polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly);
-void polySubtract(polynomial *poly1, polynomial *poly2, polynomial *poly);
-void multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
-void dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
-void normalisePoly(polynomial *poly1, polynomial *poly5);
+polynomial polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly);
+polynomial polySubtract(polynomial *poly1, polynomial *poly2, polynomial *poly);
+polynomial multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
+polynomial dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
+polynomial normalisePoly(polynomial *poly1, polynomial *poly5);
 int returnOrder(polynomial *poly1);
 
 
