@@ -259,15 +259,22 @@ void polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly)
 
 ////////////////////////////////
 //double polysubtract(polynomial *poly1, polynomial *poly2, polynomial *poly)
-//Subtracts onr polynomial from another
-//Parameters: 
-//Returns:
+//Subtracts one polynomial from another
+
+//Parameters: poly1 - the polynomial to have the other subtracted from
+//            poly2 - the polynomial to subtract from poly1
+//            poly  - the resultant polynomial
+//Returns: void
 ///////////////////////////////
 
 void polySubtract(polynomial *poly1, polynomial *poly2, polynomial *poly) 
 { 
-  while(poly1->current->nextptr && poly2->current->nextptr) 
-  { 
+  while(poly1->current->nextptr != NULL && poly2->current->nextptr != NULL) //Check that current nodes are not tail 
+  {
+    // set current nodes to head
+    poly1->current = poly1 ->head;
+    poly2->current = poly2->head;
+    
     if(poly1->current->pow > poly2->current->pow) // If power of 1st polynomial is greater then 2nd, then store 1st as it is and move its pointer 
     { 
       poly->current->pow = poly1->current->pow; 
