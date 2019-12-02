@@ -3,7 +3,7 @@
 //Header file containing function declarations and polynomial type definition
 //
 //Author: Ciara Sookarry, Roger Shanahan
-//Date: 22/11/19
+//Date: 30/11/19
 #ifndef ASSIGNMENT_H
 #define ASSIGNMENT_H
 
@@ -23,13 +23,13 @@ typedef struct
 }polynomial;
 
 // Link list error messages
-typedef enum {ok, illegalNode, noMemory}llError;
+//typedef enum {ok, illegalNode, noMemory}llError;
 
 //declarations of functions to create and edit link list itself
 //void createNodeList(int max_coefficients);
 //void displayList(int highest_exponent);
 polynomial *createPoly();
-llError addnode(stNode *node, polynomial poly1);
+void addnode(stNode *node, polynomial poly1);
 void deletePoly(polynomial *poly1);
 void printPolynomial(polynomial *poly);
 

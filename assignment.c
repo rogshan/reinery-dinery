@@ -109,7 +109,7 @@ void displayList(int highest_exponent)
 polynomial *createPoly()
 {
   polynomial *poly1;
-  poly1 = (polynomial *) malloc(sizeof(poly1)); //allocate memory for poly1
+  poly1 = (polynomial *) malloc(sizeof(polynomial)); //allocate memory for poly1
   //check if memory allocated successfully
   if (poly1 != NULL){
     //SUCCESS
@@ -142,16 +142,16 @@ polynomial *createPoly()
 //          Failure: noMemory
 /////////////////////////////////////
 
-llError addnode(stNode *node, polynomial *poly1)
+void addnode(stNode *node, polynomial *poly1)
 {
-  llError returnVal = ok;
+  //llError returnVal = ok;
   stNode *newNode;
   
   // allocate memory for new node
   newNode = (stNode *) malloc(sizeof(stNode));
   if (newNode == NULL){
     //allocation failed
-    returnVal = noMemory;
+    // returnVal = noMemory;
   }else {
     //allocation successful
     //associate data with newNode
@@ -162,7 +162,7 @@ llError addnode(stNode *node, polynomial *poly1)
     //set successor of current node to newNode
     poly1->current->nextptr = newNode;
   }
-  return returnVal;
+  //return returnVal;
 }
 
 /////////////////////////////////////
@@ -173,7 +173,7 @@ llError addnode(stNode *node, polynomial *poly1)
 // return: void
 ////////////////////////////////////
 
-void deletePoly(polynomial *poly1)
+void deletePoly(polynomial  *poly1)
 {
   polynomial *next;
 
@@ -373,8 +373,8 @@ void dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly)
 ////////////////////////////////////
 void normalisePoly(polynomial *poly1, polynomial *poly5)
 { 
-  //poly->*head->coeff ??
-  int a = poly1->current->coeff;
+  poly1->current = poly1->head; // Set current node to the head
+  double a = poly1->head->nextptr->coeff; // assign a to the coefficient of the node after head
   stNode *temp;                   //creates a temporary node that contains a coefficient and a power
   while (poly1->current != NULL) 
   {          
