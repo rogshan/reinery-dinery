@@ -356,6 +356,14 @@ void dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly)
   //removeDuplicates(poly); // this function will be invoke to add the coefficient of the elements having same power from the resultant linked list 
 }
 
+
+/////////////////////////////////////
+// normalisePoly()
+// divides all coefficients of the polynomial by the value of the coefficient of the highest order term
+//
+// parameter: *poly1 - polynomial 
+// return: *poly5 - new polynomial with all coefficient of *poly1 divided by the coefficient of its highest order term
+////////////////////////////////////
 void normalisePoly(polynomial *poly1, polynomial *poly5)
 { 
   //poly->*head->coeff ??
