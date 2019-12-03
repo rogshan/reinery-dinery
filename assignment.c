@@ -162,7 +162,7 @@ stNode addnode(stNode *node, polynomial *poly1)
     //set successor of current node to newNode
     poly1->current->nextptr = newNode;
   }
-  //return returnVal;
+  return *newNode;
 }
 
 /////////////////////////////////////
@@ -254,7 +254,8 @@ polynomial polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly)
     poly->current->nextptr = (polynomial *)malloc(sizeof(polynomial)); 
     poly->current = poly->current->nextptr; 
     poly->current->nextptr = NULL; 
-  } 
+  }
+  return *poly;
 }
 
 ////////////////////////////////
@@ -316,7 +317,8 @@ polynomial polySubtract(polynomial *poly1, polynomial *poly2, polynomial *poly)
     poly->current->nextptr = (polynomial *)malloc(sizeof(polynomial)); 
     poly->current = poly->current->nextptr; 
     poly->current->nextptr = NULL; 
-  } 
+  }
+  return *poly;
 }
 
 ////////////////////////////////////////
