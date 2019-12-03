@@ -142,7 +142,7 @@ polynomial *createPoly()
 //          Failure: noMemory
 /////////////////////////////////////
 
-void addnode(stNode *node, polynomial *poly1)
+stNode addnode(stNode *node, polynomial *poly1)
 {
   //llError returnVal = ok;
   stNode *newNode;
