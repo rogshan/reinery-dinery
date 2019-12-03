@@ -336,7 +336,7 @@ polynomial multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly) 
       stNode *temp;               //creates a temporary node that contains a coefficient and a power
       temp->coeff = poly1->current->coeff * poly2->current->coeff;    // Multiply the coefficient of both polynomials and store it in coeff 
       temp->pow = poly1->current->pow + poly2->current->pow;    // Add the powerer of both polynomials and store it in power 
-      poly->current = addnode(temp, poly); // Invoke  function to create  a newnode by passing three parameters 
+      *poly->current = addnode(temp, poly); // Invoke  function to create  a newnode by passing three parameters 
       poly2->current = poly2->current->nextptr;                    // move the pointer of 2nd polynomial  two get its next term 
     }
     poly1->current = poly1->current->nextptr;  // move the pointer of 1st polynomial
@@ -358,7 +358,7 @@ polynomial dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly)
       stNode *temp;     //creates a temporary node that contains a coefficient and a power
       temp->coeff = poly1->current->coeff / poly2->current->coeff; // Divide the coefficient of both polynomials and store it in coeff 
       temp->pow = poly1->current->pow - poly2->current->pow; // Subtract the power of both polynomials and store it in power 
-      poly->current = addnode(temp, poly); // Invoke addnode function to create a newnode by passing twp parameters
+      *poly->current = addnode(temp, poly); // Invoke addnode function to create a newnode by passing twp parameters
       poly2->current = poly2->current->nextptr; // move the pointer of 2nd polynomial two get its next term 
     }
     poly1->current = poly1->current->nextptr; // Move the pointer of 1st polynomial 
@@ -386,7 +386,7 @@ polynomial normalisePoly(polynomial *poly1, polynomial *poly5)
     temp->coeff = (poly1->current->coeff) / a;  
     temp->pow = poly1->current->pow;
     // Invoke addnode function to create a newnode by passing two parameters 
-    poly5->current = addnode(temp, poly5); 
+    *poly5->current = addnode(temp, poly5); 
     // move the pointer of the polynomial to get its next term 
     poly1->current = poly1->current->nextptr; 
   }
