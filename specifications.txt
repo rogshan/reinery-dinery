@@ -1,7 +1,7 @@
 specifications.txt
 a text file which contains the specifications for each operation
 Author: Ciara Sookarry, Aoife O'Doherty, Anna Shaughnessy
-Date: 30/11/19
+Date: 4/12/19
 
 
 ////////////////////////////////
@@ -168,7 +168,7 @@ Steps:
 3) Return the highest power of x
 
 /////////////////////////////
-- printPoly()
+- printPolynomial()
 - Prints a given polynomial to the terminal
 
 - Parameters: *poly - pointer to a valid polynomial 
