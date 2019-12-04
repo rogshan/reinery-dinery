@@ -1,6 +1,6 @@
 //assignment.c
 //Contains operations for use on polynomials
-//date: 1/12/2019
+//date: 04/12/2019
 //author: Roger Shanahan, Ciara Sookarry, Anna Shaughnessy, Aoife O'Doherty
 
 #include <stdlib.h>
@@ -144,14 +144,13 @@ polynomial *createPoly()
 
 stNode addnode(stNode *node, polynomial *poly1)
 {
-  //llError returnVal = ok;
   stNode *newNode;
   
   // allocate memory for new node
   newNode = (stNode *) malloc(sizeof(stNode));
   if (newNode == NULL){
     //allocation failed
-    // returnVal = noMemory;
+    printf("There is no memory");
   }else {
     //allocation successful
     //associate data with newNode

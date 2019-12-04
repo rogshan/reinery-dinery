@@ -2,7 +2,7 @@
 //Main file for CE4703 assignment 3
 //Contains user interface for user inputs
 //Authors: Ciara Sookarry, Roger Shanahan, Aoife O`Doherty, Anna Shaughnessy
-//Date: 30/11/19 (Update as necessary)
+//Date: 04/12/19 (Update as necessary)
 
 #include <stdlib.h>
 #include <stdio.h>
