@@ -16,84 +16,308 @@ int main()
 {
   // Tests the createPoly function
   // Sees is return value is null or not
-  createPoly();
-  //if NULL returned
-  if(){
-    printf("createPoly() failed test");
-  }else{
-    printf("createPoly() passed test");
+  int testCreatePoly()
+  {
+    polynomial *polyTest = createPoly();
+    //if not NULL returned
+    if(polyTest != NULL)
+    {
+      printf("createPoly() passed test");
+      return 0;
+    }
+    else
+    {
+      printf("createPoly() failed test");
+    }
   }
   
    // Tests the addNode() function
   // Sees is return value is a pointer to a new node or not
-  addNode(newNode, poly);
-  //if pointer returned
-  if(){
-    printf("addNode() passed test");
-  }else{
-    printf("addNode() failed test");
+  int testAddNode()
+  {
+    stNode *testNode;
+    testNode->coeff = 1;
+    testNode->pow = 2;
+    polynomial *polyTest = createPoly();
+    addnode(testNode, polyTest);
+    //if pointer returned
+    if(polyTest->current->nextptr == testNode)
+    {
+      printf("addNode() passed test");
+      return 0;
+    }
+    else
+    {
+      printf("addNode() failed test");
+    }
   }
   
-  ///I HAVE NO IDEA HOW TO TEST DELETENODE()
+   // Tests the deletePoly() function
+  // Sees is return value is a pointer to a new node or not
+  int testDeletePoly()
+  {
+    polynomial *polyTest = createPoly();
+    polyTest->current->nextptr->coeff = 1;
+    polyTest->current->nextptr->pow = 0;
+    //if pointer returned
+    if(deletePoly(polyTest) == 0)
+    {
+      printf("polyAdd() passed test");
+      return 0;
+    }
+    else
+    {
+      printf("polyAdd() failed test");
+    }
+  }
   
    // Tests the polyAdd() function
   // Sees is return value is a pointer to a polynomial or not
-  polyAdd(poly1, poly2, poly);
-  //if pointer returned
-  if(*poly){
+  int testPolyAdd()
+  {
+    polynomial *poly1 = createPoly();
+    int order = 5;
+    for (int i = 0; i<order; i++)
+    {
+      stNode *testNode;
+      testNode->coeff = (7-i);
+      testNode->pow = i;
+      addnode(testNode, poly1);
+    }
+    polynomial *poly2 = createPoly();
+    for (int i = 0; i<order; i++)
+    {
+      stNode *testNode;
+      testNode->coeff = i;
+      testNode->pow = i+2;
+      addnode(testNode, poly2);
+    }
+    polynomial *poly = createPoly();
+    polyAdd(poly1, poly2, poly);
+    poly1->current = poly1->head;
+    poly2->current = poly2->head;
+    poly->current = poly->head;
+    for(int i = 0; i<order; i++)
+    {
+      while(poly->current->nextptr != NULL)
+      {
+        if(poly->current->coeff != ((7-i) + i) || poly->current->pow != i)
+        {
+          deletePoly(poly1);
+          deletePoly(poly2);
+          deletePoly(poly);
+          printf("polyAdd() failed test");
+          return 1;
+        }
+        poly1->current = poly1->current->nextptr;
+        poly2->current = poly2->current->nextptr;
+        poly->current = poly->current->nextptr;
+      }
+    }
     printf("polyAdd() passed test");
-  }else{
-    printf("polyAdd() failed test");
+    return 0;
   }
   
    // Tests the polySubtract() function
-  // Sees is return value is a pointer to a new polynomial or not
-  addNode(poly1, poly2, poly);
-  //if pointer returned
-  if(*poly){
+  // Checks if return value is a pointer to a new polynomial or not
+  int testPolySubtract()
+  {
+    polynomial *poly1 = createPoly();
+    int order = 7;
+    for (int i = 0; i<order; i++)
+    {
+      stNode *testNode;
+      testNode->coeff = (9-i);
+      testNode->pow = i;
+      addnode(testNode, poly1);
+    }
+    polynomial *poly2 = createPoly();
+    for (int i = 0; i<order; i++)
+    {
+      stNode *testNode;
+      testNode->coeff = i+3;
+      testNode->pow = i+1;
+      addnode(testNode, poly2);
+    }
+    polynomial *poly = createPoly();
+    polySubtract(poly1, poly2, poly);
+    poly1->current = poly1->head;
+    poly2->current = poly2->head;
+    poly->current = poly->head;
+    for(int i = 0; i<order; i++)
+    {
+      while(poly->current->nextptr != NULL)
+      {
+        if(poly->current->coeff != ((9-i) - (i+3)) || poly->current->pow != i)
+        {
+          deletePoly(poly1);
+          deletePoly(poly2);
+          deletePoly(poly);
+          printf("polySubtract() failed test");
+          return 1;
+        }
+        poly1->current = poly1->current->nextptr;
+        poly2->current = poly2->current->nextptr;
+        poly->current = poly->current->nextptr;
+      }
+    }
     printf("polySubtract() passed test");
-  }else{
-    printf("polySubtract() failed test");
+    return 0;
   }
   
    // Tests the multiplyPoly() function
-  // Sees is return value is a pointer to a new node or not
-  multiplyPoly(poly1, poly2, poly);
-  //if pointer returned
-  if(*poly){
+  // Checks if return value is a pointer to a new node or not
+  int testMultiplyPoly()
+  {
+    polynomial *poly1 = createPoly();
+    int order = 4;
+    for (int i = 0; i<order; i++)
+    {
+      stNode *testNode;
+      testNode->coeff = (5-i);
+      testNode->pow = i-2;
+      addnode(testNode, poly1);
+    }
+    polynomial *poly2 = createPoly();
+    for (int i = 0; i<order; i++)
+    {
+      stNode *testNode;
+      testNode->coeff = i-2;
+      testNode->pow = i;
+      addnode(testNode, poly2);
+    }
+    polynomial *poly = createPoly();
+    multiplyPoly(poly1, poly2, poly);
+    poly1->current = poly1->head;
+    poly2->current = poly2->head;
+    poly->current = poly->head;
+    for(int i = 0; i<order; i++)
+    {
+      while(poly->current->nextptr != NULL)
+      {
+        if(poly->current->coeff != ((5-i) * (i-2)) || poly->current->pow != i)
+        {
+          deletePoly(poly1);
+          deletePoly(poly2);
+          deletePoly(poly);
+          printf("multiplyPoly()) failed test");
+          return 1;
+        }
+        poly1->current = poly1->current->nextptr;
+        poly2->current = poly2->current->nextptr;
+        poly->current = poly->current->nextptr;
+      }
+    }
     printf("multiplyPoly() passed test");
-  }else{
-    printf("multiplyPoly() failed test");
+    return 0;
   }
   
    // Tests the dividePoly() function
-  // Sees is return value is a pointer to a new node or not
-  multiplyPoly(poly1, poly2, poly);
-  //if pointer returned
-  if(*poly){
+  // Checks if return value is a pointer to a new node or not
+  int testDividePoly()
+  {
+    polynomial *poly1 = createPoly();
+    int order = 8;
+    for (int i = 0; i<order; i++)
+    {
+      stNode *testNode;
+      testNode->coeff = (7-i);
+      testNode->pow = i;
+      addnode(testNode, poly1);
+    }
+    polynomial *poly2 = createPoly();
+    for (int i = 0; i<order; i++)
+    {
+      stNode *testNode;
+      testNode->coeff = (3*i);
+      testNode->pow = i;
+      addnode(testNode, poly2);
+    }
+    polynomial *poly = createPoly();
+    dividePoly(poly1, poly2, poly);
+    poly1->current = poly1->head;
+    poly2->current = poly2->head;
+    poly->current = poly->head;
+    for(int i = 0; i<order; i++)
+    {
+      while(poly->current->nextptr != NULL)
+      {
+        if(poly->current->coeff != ((7-i) / (3*i)) || poly->current->pow != i)
+        {
+          deletePoly(poly1);
+          deletePoly(poly2);
+          deletePoly(poly);
+          printf("dividePoly() failed test");
+          return 1;
+        }
+        poly1->current = poly1->current->nextptr;
+        poly2->current = poly2->current->nextptr;
+        poly->current = poly->current->nextptr;
+      }
+    }
     printf("dividePoly() passed test");
-  }else{
-    printf("dividePoly() failed test");
+    return 0;
   }
   
    // Tests the normalisePoly() function
   // Sees is return value is a pointer to a new node or not
-  normalisePoly(poly1, poly5);
-  //if pointer returned
-  if(*poly5){
+  int testNormalisedPoly()
+  {
+    polynomial *poly1 = createPoly();
+    int order = 6;
+    for (int i = 0; i<order; i++)
+    {
+      stNode *testNode;
+      testNode->coeff = (5+i);
+      testNode->pow = i;
+      addnode(testNode, poly1);
+    }
+    polynomial *polyN = createPoly();
+    normalisePoly(poly1, polyN);
+    poly1->current = poly1->current->nextptr;
+    polyN->current = polyN->current->nextptr;
+    for(int i = 0; i<order; i++)
+    {
+      while(polyN->current->nextptr != NULL)
+      {
+        if(polyN->current->coeff != (5+i)/6 || polyN->current->pow != i)
+        {
+          deletePoly(poly1);
+          deletePoly(polyN);
+          printf("normalisePoly() failed test");
+          return 1;
+        }
+        poly1->current = poly1->current->nextptr;
+        polyN->current = polyN->current->nextptr;
+      }
+    }
     printf("normalisePoly() passed test");
-  }else{
-    printf("normalisePoly() failed test");
+    return 0;
   }
   
    // Tests the returnOrder() function
   // Sees is return value is greater than zero
-  returnOrder(poly1);
-  //if pointer returned
-  if(poly1->current->pow >= 0){
-    printf("returnOrder() passed test");
-  }else{
-    printf("returnOrder() failed test");
+  int testReturnOrder()
+  {
+    polynomial *poly = createPoly();
+    int order = 6;
+    for (int i = 0; i<order; i++)
+    {
+      stNode *testNode;
+      testNode->coeff = (5+i);
+      testNode->pow = i;
+      addnode(testNode, poly);
+    }
+    int polyOrder = returnOrder(poly);
+    //if pointer returned
+    if(polyOrder == (5+(order-1)))
+    {
+      printf("returnOrder() passed test");
+    }
+    else
+    {
+      printf("returnOrder() failed test");
+    }
   }
   
   // NO IDEA HOW TO TEST PRINTPOLYNOMIAL EITHER

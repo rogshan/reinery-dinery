@@ -148,10 +148,13 @@ stNode addnode(stNode *node, polynomial *poly1)
   
   // allocate memory for new node
   newNode = (stNode *) malloc(sizeof(stNode));
-  if (newNode == NULL){
+  if (newNode == NULL)
+  {
     //allocation failed
     printf("There is no memory");
-  }else {
+  }
+  else
+  {
     //allocation successful
     //associate data with newNode
     *newNode = *node;
@@ -172,7 +175,7 @@ stNode addnode(stNode *node, polynomial *poly1)
 // return: void
 ////////////////////////////////////
 
-void deletePoly(polynomial  *poly1)
+int deletePoly(polynomial  *poly1)
 {
   polynomial *next;
 
@@ -191,6 +194,7 @@ void deletePoly(polynomial  *poly1)
   free(poly1->head);
   //and delete the list itself
   free(poly1);
+  return 0;
 }
 /////////////////////////////
 //double polyadd(polynomial *poly1, polynomial *poly2, polynomial *poly)

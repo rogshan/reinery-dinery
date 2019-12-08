@@ -29,7 +29,7 @@ typedef struct
 //void displayList(int highest_exponent);
 polynomial *createPoly();
 stNode addnode(stNode *node, polynomial *poly1);
-void deletePoly(polynomial *poly1);
+int deletePoly(polynomial *poly1);
 void printPolynomial(polynomial *poly);
 
 //declarations of functions to manipulate polynomial
