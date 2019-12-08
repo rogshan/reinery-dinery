@@ -1,7 +1,7 @@
 specifications.txt
 a text file which contains the specifications for each operation
 Author: Ciara Sookarry, Aoife O'Doherty, Anna Shaughnessy
-Date: 4/12/19
+Date: 8/12/19
 
 
 ////////////////////////////////
@@ -50,16 +50,16 @@ Steps:
 //
 // Parameters: stnode - data to be contained in the new node
 //             poly1  - polynomial in which to add new node
-// Returns: Success: ok
-//          Failure: noMemory
+// Returns: Success: *newNode - pointer to the new node
+//          Failure: NULL
 
 Steps:
 1) Allocate memory for a new node
-2) If allocations fails, return noMemory
+2) If allocations fails, return NULL
 3) If allocation successful, add data to the new node
 4) Change the successor to the current node to the successor of the new node
 5) Set the successor of the current node to the new node
-6) return ok
+6) return *newNode
 
 ////////////////////////////////
 - deletePoly()
@@ -83,7 +83,7 @@ Steps:
 - adds 2 polynomials together by adding their coefficients
 
 - Parameters: 2 polynomials with coefficients of type double
-- Output: void
+- Output: *poly - the resultant polynomial
 
 Steps:
 1) If power of 1st polynomial is greater then 2nd, then store 1st as it is and move its pointer 
