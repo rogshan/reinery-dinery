@@ -22,10 +22,9 @@ typedef struct
   stNode *current; //pointer to the current node
 }polynomial;
 
-// Link list error messages
-//typedef enum {ok, illegalNode, noMemory}llError;
-
+//////////////////////////
 //declarations of functions to create and edit link list itself
+//////////////////////////
 //void createNodeList(int max_coefficients);
 //void displayList(int highest_exponent);
 polynomial *createPoly();
