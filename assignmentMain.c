@@ -299,18 +299,18 @@ int main()
   // Sees is return value is greater than zero
   int testReturnOrder()
   {
-    polynomial *poly = createPoly();
+    polynomial *polyTest = createPoly();
     int order = 6;
     for (int i = 0; i<order; i++)
     {
       stNode *testNode;
-      testNode->coeff = (5+i);
+      testNode->coeff = (4*i);
       testNode->pow = i;
-      addnode(testNode, poly);
+      addnode(testNode, polyTest);
     }
-    int polyOrder = returnOrder(poly);
+    int polyOrder = returnOrder(polyTest);
     //if pointer returned
-    if(polyOrder == (5+(order-1)))
+    if(polyOrder == (4*(order-1)))
     {
       printf("returnOrder() passed test");
     }
@@ -320,7 +320,29 @@ int main()
     }
   }
   
-  // NO IDEA HOW TO TEST PRINTPOLYNOMIAL EITHER
+  int testPrintPolynomial()
+  {
+    int order = 5;
+    polynomial *polyTest = createPoly();
+    for (int i = 0; i<order; i++)
+    {
+      stNode *testNode;
+      testNode->coeff = (2+i);
+      testNode->pow = i;
+      addnode(testNode, polyTest);
+    }
+    if(printPolynomial(polyTest) == 0)
+    {
+      deletePoly(polyTest);
+      printf("printPolynomial() passed test");
+      return 0;
+    }
+    else
+    {
+      deletePoly(polyTest);
+      return 1;
+    }
+  }
 }
 
 

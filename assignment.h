@@ -30,7 +30,7 @@ typedef struct
 polynomial *createPoly();
 stNode addnode(stNode *node, polynomial *poly1);
 int deletePoly(polynomial *poly1);
-void printPolynomial(polynomial *poly);
+int printPolynomial(polynomial *poly);
 
 //declarations of functions to manipulate polynomial
 polynomial polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly);

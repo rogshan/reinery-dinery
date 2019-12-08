@@ -403,16 +403,27 @@ polynomial normalisePoly(polynomial *poly1, polynomial *poly5)
 //Parameter: polynomial of type polynomial
 //Returns: integer value of highest power
 //////////////////////////////////
-int returnOrder(polynomial *poly1)
+int returnOrder(polynomial *poly)
 {
+  int highestOrder = 0;
   //make the head the current node
-  poly1->current = poly1->head;
+  poly->current = poly->head;
   //move to the next node
   //this will be the term with the highest power...
   // ...becuase of the order we chose to print in
-  poly1->current = poly1->current->nextptr;
+  while(poly->current->nextptr != NULL && highestOrder == 0) 
+  {
+    if(poly->current->coeff != 0)
+    {
+      highestOrder = poly->current->coeff;
+    }
+    else
+    {
+      poly->current = poly->current->nextptr;
+    }
+  }
   //return the power associated with this first node
-  return poly1->current->pow;
+  return highestOrder;
 }
 
 ////////////////////////////////////////
@@ -424,8 +435,10 @@ int returnOrder(polynomial *poly1)
 //Returns:   void
 ///////////////////////////////////////
 
-void printPolynomial(polynomial *poly) //printPolynomial function accepts the structure of polynomial
+int printPolynomial(polynomial *poly) //printPolynomial function accepts the structure of polynomial
 {
+  if(poly == NULL)
+    return 1;
   poly->current = poly->head;           //sets the current polynomial to the head
   while(poly->current != NULL)          //while current state is not NULL
   {
@@ -440,5 +453,6 @@ void printPolynomial(polynomial *poly) //printPolynomial function accepts the st
     } 
     poly->current = poly->current->nextptr;         //move the polynomial to the next value
   }
+  return 0;
 }
 
