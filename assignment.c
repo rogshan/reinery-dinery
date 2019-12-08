@@ -1,6 +1,6 @@
 //assignment.c
 //Contains operations for use on polynomials
-//date: 04/12/2019
+//date: 08/12/2019
 //author: Roger Shanahan, Ciara Sookarry, Anna Shaughnessy, Aoife O'Doherty
 
 #include <stdlib.h>
