@@ -138,8 +138,8 @@ polynomial *createPoly()
 //
 // Parameters: stNode - data to be contained in the new node
 //             poly1  - polynomial in which to add new node
-// Returns: Success: ok
-//          Failure: noMemory
+// Returns: Success: pointer to new node
+//          Failure: NULL
 /////////////////////////////////////
 
 stNode addnode(stNode *node, polynomial *poly1)
@@ -197,8 +197,7 @@ void deletePoly(polynomial  *poly1)
 //Adds coefficients of each x^n term
 //Parameters: *poly1 , *poly2
 //         pointers to valid polynomials
-//Returns: *poly ????
-//         pointer to the resultant polynomial
+//Returns: *poly - pointer to the resultant polynomial
 ////////////////////////////
 
 polynomial polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly) 
@@ -264,7 +263,7 @@ polynomial polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly)
 //Parameters: poly1 - the polynomial to have the other subtracted from
 //            poly2 - the polynomial to subtract from poly1
 //            poly  - the resultant polynomial
-//Returns: void
+//Returns: *poly - pointer to the resultant polynomial
 ///////////////////////////////
 
 polynomial polySubtract(polynomial *poly1, polynomial *poly2, polynomial *poly) 
@@ -392,12 +391,14 @@ polynomial normalisePoly(polynomial *poly1, polynomial *poly5)
   return *poly5;
 }
 
+//////////////////////////////////
 // int returnOrder()
 // returns the order of the polynomial
 // i.e. the highest power of x^n with a coefficient != 0
 //
 //Parameter: polynomial of type polynomial
 //Returns: integer value of highest power
+//////////////////////////////////
 int returnOrder(polynomial *poly1)
 {
   //make the head the current node
@@ -416,7 +417,7 @@ int returnOrder(polynomial *poly1)
 //          Uses a while loop so that it will run through all the values of the polynomial
 //          until it reaches the end (ie NULL)
 //Parameters:   struct Node *polynomial
-//Returns:   prints the polynomial to stdout
+//Returns:   void
 ///////////////////////////////////////
 
 void printPolynomial(polynomial *poly) //printPolynomial function accepts the structure of polynomial
