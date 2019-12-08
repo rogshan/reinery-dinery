@@ -3,7 +3,7 @@
 //Header file containing function declarations and polynomial type definition
 //
 //Author: Ciara Sookarry, Roger Shanahan
-//Date: 04/12/19
+//Date: 08/12/19
 #ifndef ASSIGNMENT_H
 #define ASSIGNMENT_H
 
