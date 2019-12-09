@@ -7,94 +7,6 @@
 #include <stdio.h>
 #include "assignment.h"
 
-/*
-void readPolynomial(struct polynomial poly[10])
-{
-  int totalNum; //total number of values
-
-  printf("Please enter the total number of terms used in the polynomial");
-  scanf("&d", &totalNum);
-  
-  printf("Please enter the coefficient and exponent\n");
-  for(int i = 0l i<totalNum; i++)
-  {
-    printf("Enter the coeffieient (%d): ", i+1);
-    scanf("%lf", &poly[i].coefficient);
-    printf("Enter the exponent (%d): ", i+1);
-    scanf("%lf", &poly[i].exponent);
-  }
-  return totalNum;
-}
-*/
-
- /*void createNodeList(int max_coefficients)
-{
-  struct node *fnNode, *tmp;
-  int num, i;
-  stNode = (struct node *)malloc(sizeof(struct node));
-  if(stNode == NULL) //check whether the fnnode is NULL and if so no memory allocation
-  {
-    printf(" Memory can not be allocated.");
-  }
-  else // reads data for the node through keyboard
-  {
-    printf("Input coefficient for highest value exponent: ");
-    scanf("%d", &num);
-    num = stNode->current->num;      
-    stNode->current->nextptr = NULL; // links the address field to NULL
-    tmp = stNode;
-    for(i=2; i<=max_coefficients; i++) // Creating n nodes and adding to linked list
-    {
-      fnNode = (struct node *)malloc(sizeof(struct node));
-      if(fnNode == NULL)
-      {
-        printf("Memory can not be allocated.");
-        break;
-      }
-      else
-      {
-        printf("Input coefficient for next value: ");
-        scanf(" %d", &num);
-        num = fnNode->current->num;       // links the num field of fnNode with num
-        fnNode->current->nextptr = NULL;  // links the address field of fnNode with NULL
-        tmp->current->nextptr = fnNode;   // links previous node i.e. tmp to the fnNode
-        tmp = tmp->current->nextptr; 
-      }
-    }
-  }
-}
-
- */
-
-/*
-void displayList(int highest_exponent)
-{
-  polynomial *tmp;
-  if(stNode == NULL)
-  {
-    printf(" List is empty.");
-  }
-  else
-  {
-    tmp = stNode;
-    while(tmp != NULL)
-    {
-	    for(int i=highest_exponent; i>=0; --i)
-	    {
-	      if(i>0)
-	      {
-	        printf("%lf x^(%d), ", (tmp->current->coeff), i);       // prints the data of current node
-		      tmp = tmp->current->nextptr;                    // advances the position of current node
-	    	}
-	      else
-		    {
-		      printf("%lf\n", (tmp->current->coeff)); 
-	    	}
-	    }
-    }
-  }
-}
-*/
 
 /////////////////////////////////////
 // createPoly()
@@ -111,18 +23,22 @@ polynomial *createPoly()
   polynomial *poly1;
   poly1 = (polynomial *) malloc(sizeof(polynomial)); //allocate memory for poly1
   //check if memory allocated successfully
-  if (poly1 != NULL){
+  if (poly1 != NULL)
+  {
     //SUCCESS
     //try to allocate memory for the head
     poly1->head = (stNode *) malloc(sizeof(stNode));
     //check if memory allocated successfully
-    if (poly1->head != NULL){
+    if (poly1->head != NULL)
+    {
       //SUCCESS
       //point head to tail
       poly1->head->nextptr = NULL;
       //make head the current node
       poly1->current = poly1->head;
-    }else{
+    }
+    else
+    {
       //memory allocation to head failed
       //de-allocate poly1 and set to NULL
       free(poly1);

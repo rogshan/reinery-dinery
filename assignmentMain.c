@@ -86,8 +86,8 @@ int main()
   test testDeletePoly()
   {
     polynomial *polyTest = createPoly();        //creates a node for the test
-    int order = 5;                           //sets the order
-    for (int i = 0; i<order; i++)
+    int order = 4;                           //sets the order
+    for (int i = 0; i<=order; i++)
     {
       stNode *testNode = malloc(sizeof(stNode *));
       testNode->coeff = (7-i);        //assigns a value to the coefficient of the node
@@ -107,13 +107,13 @@ int main()
     }
   }
   
-   // Tests the polyAdd() function
-  // Sees is return value is a pointer to a polynomial or not
+  // Tests the polyAdd() function
+  // Checks if a return value is a pointer to a polynomial or not
   test testPolyAdd()
   {
     polynomial *poly1 = createPoly();        //creates a polynomial for the test
     int order = 5;                           //sets the order
-    for (int i = 0; i<order; i++)
+    for (int i = 0; i<=order; i++)
     {
       stNode *testNode = malloc(sizeof(stNode *));
       testNode->coeff = (7-i);        //assigns a value to the coefficient of the node
@@ -121,11 +121,11 @@ int main()
       addnode(testNode, poly1);    //adds the node to the polynomial
     }
     polynomial *poly2 = createPoly();        //creates a polynomial for the test
-    for (int i = 0; i<order; i++)
+    for (int i = 0; i<=order; i++)
     {
       stNode *testNode = malloc(sizeof(stNode *));
       testNode->coeff = i;          //assigns a value to the coefficient of the node
-      testNode->pow = i+2;              //assigns a value to the power of the node
+      testNode->pow = i;              //assigns a value to the power of the node
       addnode(testNode, poly2);    //adds the node to the polynomial
     }
     polynomial *poly = createPoly();        //creates a polynomial for the test
@@ -133,7 +133,7 @@ int main()
     poly1->current = poly1->head;
     poly2->current = poly2->head;
     poly->current = poly->head;
-    for(int i = 0; i<order; i++)
+    for(int i = 0; i<=order; i++)
     {
       while(poly->current->nextptr != NULL)
       {
@@ -159,8 +159,8 @@ int main()
   test testPolySubtract()
   {
     polynomial *poly1 = createPoly();        //creates a polynomial for the test
-    int order = 7;
-    for (int i = 0; i<order; i++)
+    int order = 5;
+    for (int i = 0; i<=order; i++)
     {
       stNode *testNode = malloc(sizeof(stNode *));
       testNode->coeff = (9-i);          //assigns a value to the coefficient of the node
@@ -168,7 +168,7 @@ int main()
       addnode(testNode, poly1);    //adds the node to the polynomial
     }
     polynomial *poly2 = createPoly();        //creates a polynomial for the test
-    for (int i = 0; i<order; i++)
+    for (int i = 0; i<=order; i++)
     {
       stNode *testNode = malloc(sizeof(stNode *));
       testNode->coeff = i+3;          //assigns a value to the coefficient of the node
@@ -180,7 +180,7 @@ int main()
     poly1->current = poly1->head;
     poly2->current = poly2->head;
     poly->current = poly->head;
-    for(int i = 0; i<order; i++)
+    for(int i = 0; i<=order; i++)
     {
       while(poly->current->nextptr != NULL)
       {
@@ -207,7 +207,7 @@ int main()
   {
     polynomial *poly1 = createPoly();        //creates a polynomial for the test
     int order = 4;
-    for (int i = 0; i<order; i++)
+    for (int i = 0; i<=order; i++)
     {
       stNode *testNode = malloc(sizeof(stNode *));
       testNode->coeff = (5-i);          //assigns a value to the coefficient of the node
@@ -215,7 +215,7 @@ int main()
       addnode(testNode, poly1);    //adds the node to the polynomial
     }
     polynomial *poly2 = createPoly();        //creates a polynomial for the test
-    for (int i = 0; i<order; i++)
+    for (int i = 0; i<=order; i++)
     {
       stNode *testNode = malloc(sizeof(stNode *));
       testNode->coeff = i-2;          //assigns a value to the coefficient of the node
@@ -227,7 +227,7 @@ int main()
     poly1->current = poly1->head;
     poly2->current = poly2->head;
     poly->current = poly->head;
-    for(int i = 0; i<order; i++)
+    for(int i = 0; i<=order; i++)
     {
       while(poly->current->nextptr != NULL)
       {
@@ -253,8 +253,8 @@ int main()
   test testDividePoly()
   {
     polynomial *poly1 = createPoly();        //creates a polynomial for the test
-    int order = 8;
-    for (int i = 0; i<order; i++)
+    int order = 6;
+    for (int i = 0; i<=order; i++)
     {
       stNode *testNode = malloc(sizeof(stNode *));
       testNode->coeff = (7-i);          //assigns a value to the coefficient of the node
@@ -262,7 +262,7 @@ int main()
       addnode(testNode, poly1);    //adds the node to the polynomial
     }
     polynomial *poly2 = createPoly();        //creates a polynomial for the test
-    for (int i = 0; i<order; i++)
+    for (int i = 0; i<=order; i++)
     {
       stNode *testNode = malloc(sizeof(stNode *));
       testNode->coeff = (3*i);          //assigns a value to the coefficient of the node
@@ -274,7 +274,7 @@ int main()
     poly1->current = poly1->head;
     poly2->current = poly2->head;
     poly->current = poly->head;
-    for(int i = 0; i<order; i++)
+    for(int i = 0; i<=order; i++)
     {
       while(poly->current->nextptr != NULL)
       {
@@ -300,8 +300,8 @@ int main()
   test testNormalisePoly()
   {
     polynomial *poly1 = createPoly();        //creates a polynomial for the test
-    int order = 6;
-    for (int i = 0; i<order; i++)
+    int order = 3;
+    for (int i = 0; i<=order; i++)
     {
       stNode *testNode = malloc(sizeof(stNode *));
       testNode->coeff = (5+i);          //assigns a value to the coefficient of the node
@@ -312,7 +312,7 @@ int main()
     normalisePoly(poly1, polyN);
     poly1->current = poly1->current->nextptr;
     polyN->current = polyN->current->nextptr;
-    for(int i = 0; i<order; i++)
+    for(int i = 0; i<=order; i++)
     {
       while(polyN->current->nextptr != NULL)
       {
@@ -337,7 +337,7 @@ int main()
   {
     polynomial *polyTest = createPoly();        //creates a polynomial for the test
     int order = 6;
-    for (int i = 0; i<order; i++)
+    for (int i = 0; i<=order; i++)
     {
       stNode *testNode = malloc(sizeof(stNode *));
       testNode->coeff = (4*i);          //assigns a value to the coefficient of the node
@@ -362,7 +362,7 @@ int main()
   {
     int order = 5;
     polynomial *polyTest = createPoly();        //creates a polynomial for the test
-    for (int i = 0; i<order; i++)
+    for (int i = 0; i<=order; i++)
     {
       stNode *testNode = malloc(sizeof(stNode *));
       testNode->coeff = (2+i);          //assigns a value to the coefficient of the node
