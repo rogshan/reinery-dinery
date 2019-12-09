@@ -10,7 +10,6 @@
 
 typedef enum {PASS, FAIL} test;
 
-
 test testAddNode();
 test testAddNode();
 test testDeletePoly();
