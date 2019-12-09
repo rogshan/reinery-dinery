@@ -3,7 +3,7 @@
 //Header file containing function declarations and polynomial type definition
 //
 //Author: Ciara Sookarry, Roger Shanahan
-//Date: 08/12/19
+//Date: 2019/12/08
 #ifndef ASSIGNMENT_H
 #define ASSIGNMENT_H
 
@@ -39,6 +39,5 @@ polynomial multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
 polynomial dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly);
 polynomial normalisePoly(polynomial *poly1, polynomial *poly5);
 int returnOrder(polynomial *poly1);
-
 
 #endif

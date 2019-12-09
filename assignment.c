@@ -1,6 +1,6 @@
 //assignment.c
 //Contains operations for use on polynomials
-//date: 08/12/2019
+//date: 2019/12/08
 //author: Roger Shanahan, Ciara Sookarry, Anna Shaughnessy, Aoife O'Doherty
 
 #include <stdlib.h>
@@ -177,15 +177,16 @@ stNode addnode(stNode *node, polynomial *poly1)
 
 int deletePoly(polynomial  *poly1)
 {
-  polynomial *next;
+  polynomial *next  = malloc(sizeof(polynomial *));
 
   //delete all nodes until list is empty
   //starting at the head
   poly1->current = poly1->head;
 
   //delete all nodes that are not the head or tail
-  while(poly1->head->nextptr != NULL){
-    next = poly1->head->nextptr;
+  while(poly1->head->nextptr != NULL)
+  {
+    next->current = poly1->head->nextptr;
     poly1->head->nextptr = poly1->head->nextptr->nextptr;
     free(next);
   }
@@ -234,7 +235,7 @@ polynomial polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly)
     // Dynamically create new node
     //stNode newNode; 
     //addnode(newNode, poly);
-    poly->current->nextptr = (polynomial *)malloc(sizeof(polynomial)); 
+    poly->current->nextptr = malloc(sizeof(stNode *)); 
     poly->current = poly->current->nextptr; 
     poly->current->nextptr = NULL; 
   } 
@@ -253,7 +254,7 @@ polynomial polyAdd(polynomial *poly1, polynomial *poly2, polynomial *poly)
       poly2->current = poly2->current->nextptr; 
     }
     //
-    poly->current->nextptr = (polynomial *)malloc(sizeof(polynomial)); 
+    poly->current->nextptr = malloc(sizeof(stNode *)); 
     poly->current = poly->current->nextptr; 
     poly->current->nextptr = NULL; 
   }
@@ -298,7 +299,7 @@ polynomial polySubtract(polynomial *poly1, polynomial *poly2, polynomial *poly)
       poly2->current = poly2->current->nextptr; 
     }     
     // Dynamically create new node 
-    poly->current->nextptr = (polynomial *)malloc(sizeof(polynomial)); 
+    poly->current->nextptr = malloc(sizeof(stNode *)); 
     poly->current = poly->current->nextptr; 
     poly->current->nextptr = NULL; 
   } 
@@ -316,7 +317,7 @@ polynomial polySubtract(polynomial *poly1, polynomial *poly2, polynomial *poly)
       poly->current->coeff = poly2->current->coeff; 
       poly2->current = poly2->current->nextptr; 
     } 
-    poly->current->nextptr = (polynomial *)malloc(sizeof(polynomial)); 
+    poly->current->nextptr = malloc(sizeof(stNode *)); 
     poly->current = poly->current->nextptr; 
     poly->current->nextptr = NULL; 
   }
@@ -335,7 +336,7 @@ polynomial multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly) 
   { 
     while (poly2 != NULL) 
     { 
-      stNode *temp;               //creates a temporary node that contains a coefficient and a power
+      stNode *temp  = malloc(sizeof(stNode *));               //creates a temporary node that contains a coefficient and a power
       temp->coeff = poly1->current->coeff * poly2->current->coeff;    // Multiply the coefficient of both polynomials and store it in coeff 
       temp->pow = poly1->current->pow + poly2->current->pow;    // Add the powerer of both polynomials and store it in power 
       *poly->current = addnode(temp, poly); // Invoke  function to create  a newnode by passing three parameters 
@@ -357,7 +358,7 @@ polynomial dividePoly(polynomial *poly1, polynomial *poly2, polynomial *poly)
   { 
     while (poly2 != NULL) 
     { 
-      stNode *temp;     //creates a temporary node that contains a coefficient and a power
+      stNode *temp  = malloc(sizeof(stNode *));     //creates a temporary node that contains a coefficient and a power
       temp->coeff = poly1->current->coeff / poly2->current->coeff; // Divide the coefficient of both polynomials and store it in coeff 
       temp->pow = poly1->current->pow - poly2->current->pow; // Subtract the power of both polynomials and store it in power 
       *poly->current = addnode(temp, poly); // Invoke addnode function to create a newnode by passing twp parameters
@@ -381,7 +382,7 @@ polynomial normalisePoly(polynomial *poly1, polynomial *poly5)
 { 
   poly1->current = poly1->head; // Set current node to the head
   double a = poly1->head->nextptr->coeff; // assign a to the coefficient of the node after head
-  stNode *temp;                   //creates a temporary node that contains a coefficient and a power
+  stNode *temp  = malloc(sizeof(stNode *));                   //creates a temporary node that contains a coefficient and a power
   while (poly1->current != NULL) 
   {          
     // Divide the coefficients of the polynomials

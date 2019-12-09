@@ -2,11 +2,25 @@
 //Main file for CE4703 assignment 3
 //Contains user interface for user inputs
 //Authors: Ciara Sookarry, Roger Shanahan, Aoife O`Doherty, Anna Shaughnessy
-//Date: 08/12/19
+//Date: 2019/12/08
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "assignment.h"
+
+typedef enum {PASS, FAIL} test;
+
+
+test testAddNode();
+test testAddNode();
+test testDeletePoly();
+test testPolyAdd();
+test testPolySubtract();
+test testMultiplyPoly();
+test testDividePoly();
+test testNormalisePoly();
+test testReturnOrder();
+test testPrintPolynomial();
 
 //////////////////////////////
 // main()
@@ -14,85 +28,107 @@
 //////////////////////////////
 int main()
 {
-  // Tests the createPoly function
-  // Sees is return value is null or not
-  int testCreatePoly()
+  testAddNode();
+  testAddNode();
+  testDeletePoly();
+  testPolyAdd();
+  testPolySubtract();
+  testMultiplyPoly();
+  testDividePoly();
+  testNormalisePoly();
+  testReturnOrder();
+  testPrintPolynomial();
+}
+
+
+// Tests the createPoly function
+  // Checks if the return value is null or not
+  test testCreatePoly()
   {
-    polynomial *polyTest = createPoly();
+    polynomial *polyTest = createPoly();        //creates a polynomial for the test
     //if not NULL returned
     if(polyTest != NULL)
     {
       printf("createPoly() passed test");
-      return 0;
+      return PASS;
     }
     else
     {
       printf("createPoly() failed test");
+      return FAIL;
     }
   }
   
-   // Tests the addNode() function
-  // Sees is return value is a pointer to a new node or not
-  int testAddNode()
+  // Tests the addNode() function
+  // Checks if return value is a pointer to the new node or not
+  test testAddNode()
   {
-    stNode *testNode;
-    testNode->coeff = 1;
-    testNode->pow = 2;
-    polynomial *polyTest = createPoly();
+    stNode *testNode = malloc(sizeof(stNode *));        //creates a node for the test
+    testNode->coeff = 1;                            //assigns a value to the coefficient of the node
+    testNode->pow = 2;                              //assigns a value to the power of the node
+    polynomial *polyTest = createPoly();            //creates a polynomial for the test
     addnode(testNode, polyTest);
     //if pointer returned
     if(polyTest->current->nextptr == testNode)
     {
       printf("addNode() passed test");
-      return 0;
+      return PASS;
     }
     else
     {
       printf("addNode() failed test");
+      return FAIL;
     }
   }
   
    // Tests the deletePoly() function
   // Sees is return value is a pointer to a new node or not
-  int testDeletePoly()
+  test testDeletePoly()
   {
-    polynomial *polyTest = createPoly();
-    polyTest->current->nextptr->coeff = 1;
-    polyTest->current->nextptr->pow = 0;
+    polynomial *polyTest = createPoly();        //creates a node for the test
+    int order = 5;                           //sets the order
+    for (int i = 0; i<order; i++)
+    {
+      stNode *testNode = malloc(sizeof(stNode *));
+      testNode->coeff = (7-i);        //assigns a value to the coefficient of the node
+      testNode->pow = i;              //assigns a value to the power of the node
+      addnode(testNode, polyTest);    //adds the node to the polynomial
+    }
     //if pointer returned
     if(deletePoly(polyTest) == 0)
     {
       printf("polyAdd() passed test");
-      return 0;
+      return PASS;
     }
     else
     {
       printf("polyAdd() failed test");
+      return FAIL;
     }
   }
   
    // Tests the polyAdd() function
   // Sees is return value is a pointer to a polynomial or not
-  int testPolyAdd()
+  test testPolyAdd()
   {
-    polynomial *poly1 = createPoly();
-    int order = 5;
+    polynomial *poly1 = createPoly();        //creates a polynomial for the test
+    int order = 5;                           //sets the order
     for (int i = 0; i<order; i++)
     {
-      stNode *testNode;
-      testNode->coeff = (7-i);
-      testNode->pow = i;
-      addnode(testNode, poly1);
+      stNode *testNode = malloc(sizeof(stNode *));
+      testNode->coeff = (7-i);        //assigns a value to the coefficient of the node
+      testNode->pow = i;              //assigns a value to the power of the node
+      addnode(testNode, poly1);    //adds the node to the polynomial
     }
-    polynomial *poly2 = createPoly();
+    polynomial *poly2 = createPoly();        //creates a polynomial for the test
     for (int i = 0; i<order; i++)
     {
-      stNode *testNode;
-      testNode->coeff = i;
-      testNode->pow = i+2;
-      addnode(testNode, poly2);
+      stNode *testNode = malloc(sizeof(stNode *));
+      testNode->coeff = i;          //assigns a value to the coefficient of the node
+      testNode->pow = i+2;              //assigns a value to the power of the node
+      addnode(testNode, poly2);    //adds the node to the polynomial
     }
-    polynomial *poly = createPoly();
+    polynomial *poly = createPoly();        //creates a polynomial for the test
     polyAdd(poly1, poly2, poly);
     poly1->current = poly1->head;
     poly2->current = poly2->head;
@@ -107,7 +143,7 @@ int main()
           deletePoly(poly2);
           deletePoly(poly);
           printf("polyAdd() failed test");
-          return 1;
+          return FAIL;
         }
         poly1->current = poly1->current->nextptr;
         poly2->current = poly2->current->nextptr;
@@ -115,31 +151,31 @@ int main()
       }
     }
     printf("polyAdd() passed test");
-    return 0;
+    return PASS;
   }
   
    // Tests the polySubtract() function
   // Checks if return value is a pointer to a new polynomial or not
-  int testPolySubtract()
+  test testPolySubtract()
   {
-    polynomial *poly1 = createPoly();
+    polynomial *poly1 = createPoly();        //creates a polynomial for the test
     int order = 7;
     for (int i = 0; i<order; i++)
     {
-      stNode *testNode;
-      testNode->coeff = (9-i);
-      testNode->pow = i;
-      addnode(testNode, poly1);
+      stNode *testNode = malloc(sizeof(stNode *));
+      testNode->coeff = (9-i);          //assigns a value to the coefficient of the node
+      testNode->pow = i;              //assigns a value to the power of the node
+      addnode(testNode, poly1);    //adds the node to the polynomial
     }
-    polynomial *poly2 = createPoly();
+    polynomial *poly2 = createPoly();        //creates a polynomial for the test
     for (int i = 0; i<order; i++)
     {
-      stNode *testNode;
-      testNode->coeff = i+3;
-      testNode->pow = i+1;
-      addnode(testNode, poly2);
+      stNode *testNode = malloc(sizeof(stNode *));
+      testNode->coeff = i+3;          //assigns a value to the coefficient of the node
+      testNode->pow = i+1;              //assigns a value to the power of the node
+      addnode(testNode, poly2);    //adds the node to the polynomial
     }
-    polynomial *poly = createPoly();
+    polynomial *poly = createPoly();        //creates a polynomial for the test
     polySubtract(poly1, poly2, poly);
     poly1->current = poly1->head;
     poly2->current = poly2->head;
@@ -154,7 +190,7 @@ int main()
           deletePoly(poly2);
           deletePoly(poly);
           printf("polySubtract() failed test");
-          return 1;
+          return FAIL;
         }
         poly1->current = poly1->current->nextptr;
         poly2->current = poly2->current->nextptr;
@@ -162,31 +198,31 @@ int main()
       }
     }
     printf("polySubtract() passed test");
-    return 0;
+    return PASS;
   }
   
    // Tests the multiplyPoly() function
   // Checks if return value is a pointer to a new node or not
-  int testMultiplyPoly()
+  test testMultiplyPoly()
   {
-    polynomial *poly1 = createPoly();
+    polynomial *poly1 = createPoly();        //creates a polynomial for the test
     int order = 4;
     for (int i = 0; i<order; i++)
     {
-      stNode *testNode;
-      testNode->coeff = (5-i);
-      testNode->pow = i-2;
-      addnode(testNode, poly1);
+      stNode *testNode = malloc(sizeof(stNode *));
+      testNode->coeff = (5-i);          //assigns a value to the coefficient of the node
+      testNode->pow = i-2;              //assigns a value to the power of the node
+      addnode(testNode, poly1);    //adds the node to the polynomial
     }
-    polynomial *poly2 = createPoly();
+    polynomial *poly2 = createPoly();        //creates a polynomial for the test
     for (int i = 0; i<order; i++)
     {
-      stNode *testNode;
-      testNode->coeff = i-2;
-      testNode->pow = i;
-      addnode(testNode, poly2);
+      stNode *testNode = malloc(sizeof(stNode *));
+      testNode->coeff = i-2;          //assigns a value to the coefficient of the node
+      testNode->pow = i;              //assigns a value to the power of the node
+      addnode(testNode, poly2);    //adds the node to the polynomial
     }
-    polynomial *poly = createPoly();
+    polynomial *poly = createPoly();        //creates a polynomial for the test
     multiplyPoly(poly1, poly2, poly);
     poly1->current = poly1->head;
     poly2->current = poly2->head;
@@ -201,7 +237,7 @@ int main()
           deletePoly(poly2);
           deletePoly(poly);
           printf("multiplyPoly()) failed test");
-          return 1;
+          return FAIL;
         }
         poly1->current = poly1->current->nextptr;
         poly2->current = poly2->current->nextptr;
@@ -209,31 +245,31 @@ int main()
       }
     }
     printf("multiplyPoly() passed test");
-    return 0;
+    return PASS;
   }
   
    // Tests the dividePoly() function
   // Checks if return value is a pointer to a new node or not
-  int testDividePoly()
+  test testDividePoly()
   {
-    polynomial *poly1 = createPoly();
+    polynomial *poly1 = createPoly();        //creates a polynomial for the test
     int order = 8;
     for (int i = 0; i<order; i++)
     {
-      stNode *testNode;
-      testNode->coeff = (7-i);
-      testNode->pow = i;
-      addnode(testNode, poly1);
+      stNode *testNode = malloc(sizeof(stNode *));
+      testNode->coeff = (7-i);          //assigns a value to the coefficient of the node
+      testNode->pow = i;              //assigns a value to the power of the node
+      addnode(testNode, poly1);    //adds the node to the polynomial
     }
-    polynomial *poly2 = createPoly();
+    polynomial *poly2 = createPoly();        //creates a polynomial for the test
     for (int i = 0; i<order; i++)
     {
-      stNode *testNode;
-      testNode->coeff = (3*i);
-      testNode->pow = i;
-      addnode(testNode, poly2);
+      stNode *testNode = malloc(sizeof(stNode *));
+      testNode->coeff = (3*i);          //assigns a value to the coefficient of the node
+      testNode->pow = i;              //assigns a value to the power of the node
+      addnode(testNode, poly2);    //adds the node to the polynomial
     }
-    polynomial *poly = createPoly();
+    polynomial *poly = createPoly();        //creates a polynomial for the test
     dividePoly(poly1, poly2, poly);
     poly1->current = poly1->head;
     poly2->current = poly2->head;
@@ -248,7 +284,7 @@ int main()
           deletePoly(poly2);
           deletePoly(poly);
           printf("dividePoly() failed test");
-          return 1;
+          return FAIL;
         }
         poly1->current = poly1->current->nextptr;
         poly2->current = poly2->current->nextptr;
@@ -256,23 +292,23 @@ int main()
       }
     }
     printf("dividePoly() passed test");
-    return 0;
+    return PASS;
   }
   
    // Tests the normalisePoly() function
   // Sees is return value is a pointer to a new node or not
-  int testNormalisedPoly()
+  test testNormalisePoly()
   {
-    polynomial *poly1 = createPoly();
+    polynomial *poly1 = createPoly();        //creates a polynomial for the test
     int order = 6;
     for (int i = 0; i<order; i++)
     {
-      stNode *testNode;
-      testNode->coeff = (5+i);
-      testNode->pow = i;
-      addnode(testNode, poly1);
+      stNode *testNode = malloc(sizeof(stNode *));
+      testNode->coeff = (5+i);          //assigns a value to the coefficient of the node
+      testNode->pow = i;              //assigns a value to the power of the node
+      addnode(testNode, poly1);    //adds the node to the polynomial
     }
-    polynomial *polyN = createPoly();
+    polynomial *polyN = createPoly();        //creates a polynomial for the test
     normalisePoly(poly1, polyN);
     poly1->current = poly1->current->nextptr;
     polyN->current = polyN->current->nextptr;
@@ -285,68 +321,63 @@ int main()
           deletePoly(poly1);
           deletePoly(polyN);
           printf("normalisePoly() failed test");
-          return 1;
+          return FAIL;
         }
         poly1->current = poly1->current->nextptr;
         polyN->current = polyN->current->nextptr;
       }
     }
     printf("normalisePoly() passed test");
-    return 0;
+    return PASS;
   }
   
    // Tests the returnOrder() function
   // Sees is return value is greater than zero
-  int testReturnOrder()
+  test testReturnOrder()
   {
-    polynomial *polyTest = createPoly();
+    polynomial *polyTest = createPoly();        //creates a polynomial for the test
     int order = 6;
     for (int i = 0; i<order; i++)
     {
-      stNode *testNode;
-      testNode->coeff = (4*i);
-      testNode->pow = i;
-      addnode(testNode, polyTest);
+      stNode *testNode = malloc(sizeof(stNode *));
+      testNode->coeff = (4*i);          //assigns a value to the coefficient of the node
+      testNode->pow = i;              //assigns a value to the power of the node
+      addnode(testNode, polyTest);    //adds the node to the polynomial
     }
     int polyOrder = returnOrder(polyTest);
     //if pointer returned
     if(polyOrder == (4*(order-1)))
     {
       printf("returnOrder() passed test");
+      return PASS;
     }
     else
     {
       printf("returnOrder() failed test");
+      return FAIL;
     }
   }
   
-  int testPrintPolynomial()
+  test testPrintPolynomial()
   {
     int order = 5;
-    polynomial *polyTest = createPoly();
+    polynomial *polyTest = createPoly();        //creates a polynomial for the test
     for (int i = 0; i<order; i++)
     {
-      stNode *testNode;
-      testNode->coeff = (2+i);
-      testNode->pow = i;
-      addnode(testNode, polyTest);
+      stNode *testNode = malloc(sizeof(stNode *));
+      testNode->coeff = (2+i);          //assigns a value to the coefficient of the node
+      testNode->pow = i;              //assigns a value to the power of the node
+      addnode(testNode, polyTest);    //adds the node to the polynomial
     }
     if(printPolynomial(polyTest) == 0)
     {
       deletePoly(polyTest);
       printf("printPolynomial() passed test");
-      return 0;
+      return PASS;
     }
     else
     {
       deletePoly(polyTest);
-      return 1;
+      return FAIL;
     }
   }
-}
-
-
-  
-
-
-   
