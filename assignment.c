@@ -330,7 +330,8 @@ polynomial polySubtract(polynomial *poly1, polynomial *poly2, polynomial *poly)
 //Returns: polynomial with each coefficient multiplied by a double
 ////////////////////////////////////////
 
-polynomial multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly) // Function two Multiply two polynomial Numbers Node* multiply(Node* poly1, Node* poly2, Node* poly3) 
+polynomial multiplyPoly(polynomial *poly1, polynomial *poly2, polynomial *poly)
+// Function two Multiply two polynomial Numbers Node* multiply(Node* poly1, Node* poly2, Node* poly3) 
 {
   while (poly1 != NULL) 
   { 
