@@ -45,7 +45,7 @@ Steps:
 6) Set the polynomial to NULL
 
 /////////////////////////////////
-- addNode()
+- addnode()
 - adds a node/term to the polynomial after the current node
 //
 // Parameters: stnode - data to be contained in the new node
@@ -66,7 +66,7 @@ Steps:
 - deletes a previously created polynomial
 
 - Parameters:poly1 - the polynomial to be deleted
-- Returns: void
+- Returns: 0
 
 Steps:
 1) Start at the head node
@@ -79,7 +79,7 @@ Steps:
 8) Delete the polynomial itself
 
 ////////////////////////////////
-- addPoly()
+- polyAdd()
 - adds 2 polynomials together by adding their coefficients
 
 - Parameters: 2 polynomials with coefficients of type double
@@ -93,7 +93,7 @@ Steps:
 5) Display Linked list 
 
 ////////////////////////////////
-- subtractPoly()
+- polySubtract()
 - subtracts one polynomial from another by subtracting coefficients
 
 - Parameters: 2 polynomials with coefficients of type double
